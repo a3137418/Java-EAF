@@ -1,6 +1,10 @@
 package com.example.demo.controller;
 
+import java.util.IntSummaryStatistics;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -88,17 +92,17 @@ public class ApiController {
 	 *   }
 	 * }
 	*/
-	@GetMapping(value = "/json/bmi")
-	public ResponseEntity<ApiResponse<BMI>> calcBmi(@RequestParam(required = false, defaultValue = "0") Double h,
-													@RequestParam(required = false, defaultValue = "0") Double w) {
+	@GetMapping(value = "/json/bmi", produces = "application/json;charset=utf-8")
+	public ResponseEntity<ApiResponse<BMI>> calcBmi(@RequestParam(required = false) Double h, 
+													@RequestParam(required = false) Double w) {
 		if(h == null || w == null) {
 			// badRequest => HTTP 400
-			return ResponseEntity.badRequest().body(ApiResponse.error("請輸入身高體重參數內容"));
+			return ResponseEntity.badRequest().body(ApiResponse.error("請輸入身高與體重參數內容"));
 		}
 		
 		if(h <= 0 || w <= 0) {
 			// badRequest => HTTP 400
-			return ResponseEntity.badRequest().body(ApiResponse.error("身高體重參數內容錯誤"));
+			return ResponseEntity.badRequest().body(ApiResponse.error("身高或體重參數內容錯誤"));
 		}
 		
 		double bmiValue = w / Math.pow(h/100, 2);
@@ -109,4 +113,69 @@ public class ApiController {
 	}
 	
 	
+	/**
+	 * 6. 同名多筆資料
+	 * 路徑: /json/age?age=17&age=21&age=20
+	 * 網址: http://localhost:8080/api/json/age?age=17&age=21&age=20
+	 * 請計算出平均年齡
+	 * */
+	@GetMapping(value = "/json/age", produces = "application/json;charset=utf-8")
+	public ResponseEntity<ApiResponse<Object>> getAverage(@RequestParam(name = "age", required = false) List<Integer> ages) {
+		if(ages == null || ages.size() == 0) {
+			return ResponseEntity.badRequest().body(ApiResponse.error("請輸入年齡(age)"));
+		}
+		
+		double avg = ages.stream().mapToInt(Integer::valueOf).average().orElseGet(() -> 0);
+		Object data = Map.of("年齡", ages, "平均年齡", String.format("%.1f", avg));
+		return ResponseEntity.ok(ApiResponse.success("計算成功", data));
+	}
+	
+	/*
+	 * 7. Lab 練習: 得到多筆 score 資料
+	 * 路徑: "/json/score?score=80&score=100&score=50&score=70&score=30"
+	 * 網址: http://localhost:8080/api/json/score?score=80&score=100&score=50&score=70&score=30
+	 * 請自行設計一個方法，此方法可以
+	 * 印出: 最高分=?、最低分=?、平均=?、總分=?、及格分數列出=?、不及格分數列出=?
+	 */
+	//老師寫的
+	@GetMapping(value = "/json/score", produces = "application/json;charset=utf-8")
+	public ResponseEntity<ApiResponse<Object>> getAverageOfScore(@RequestParam(name = "score", required = false) List<Integer> scores) {
+		//統計資料
+		IntSummaryStatistics stat = scores.stream().mapToInt(Integer::valueOf).summaryStatistics();
+		//利用 Collectors.partitioningby 分組
+		//key=true 及格分數||key=false 不及格分數
+		Map<Boolean, List<Integer>> resultMap = scores.stream()
+				.collect(Collectors.partitioningBy(score -> score >= 60));
+		Object data = Map.of(
+				"最高分", stat.getMax(),
+				"最低分", stat.getMin(),
+				"平均", stat.getAverage(),
+				"總分", stat.getSum(),
+				"及格", resultMap.get(true),
+				"不及格", resultMap.get(false)
+				);	
+		return ResponseEntity.ok(ApiResponse.success("計算成功", data));
+	}
+	
+	
+	//我寫的
+	@GetMapping(value = "/json/score2", produces = "application/json;charset=utf-8")
+	public ResponseEntity<ApiResponse<Object>> getscore(@RequestParam(name = "score", required = false) List<Double> scores) {
+		if(scores == null || scores.size() == 0) {
+			return ResponseEntity.badRequest().body(ApiResponse.error("請輸入成績(score)"));
+		}
+		double max = scores.stream().mapToDouble(Double::valueOf).max().orElseGet(()->0);
+		double min = scores.stream().mapToDouble(Double::valueOf).min().orElseGet(()->0);
+		double avg = scores.stream().mapToDouble(Double::valueOf).average().orElseGet(() -> 0);
+		double sum = scores.stream().mapToDouble(Double::valueOf).sum();
+		List<Double> passedScores = scores.stream().filter(s -> s >= 60).toList();
+		List<Double> failedScores = scores.stream().filter(s -> s < 60).toList();
+		Object data = Map.of("最高分", max,
+							 "最低分",min,
+							 "平均",String.format("%.1f", avg),
+							 "總分",sum,
+							 "及格分數列出",passedScores,
+							 "不及格分數列出",failedScores);
+		return ResponseEntity.ok(ApiResponse.success("計算成功", data));
+	}
 }
