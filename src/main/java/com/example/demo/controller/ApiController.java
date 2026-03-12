@@ -2,10 +2,14 @@ package com.example.demo.controller;
 
 import java.util.Iterator;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.BMI;
+import com.example.demo.response.ApiResponse;
 
 @RestController // 可以省去撰寫 @ResponseBody
 @RequestMapping("/api") // 資源分組
@@ -67,6 +71,41 @@ public class ApiController {
 		double bmi = w / Math.pow(h/100, 2);
 		String result = bmi <= 18 ? "過輕" : bmi > 23 ? "過重" : "正常";
 		return String.format("身高:%.0fcm 體重:%.0fkg bmi=%.2f(%s)", h, w, bmi, result);
+	}
+	
+	/** 
+	 * 5. 回傳 json 結構
+	 * 路徑: /json/bmi?h=170&w=60
+	 * 網址: http://localhost:8080/api/json/bmi?h=170&w=60
+	 * 判斷: bmi <= 18 顯示過輕, bmi > 23 顯示過重
+	 * 執行結果: 
+	 * {
+	 *   "message": "BMI 計算成功",
+	 *   "data": {
+	 *     "height": 170.0,
+	 *     "weight": 60.0,
+	 *     "bmi": 20.76
+	 *   }
+	 * }
+	*/
+	@GetMapping(value = "/json/bmi")
+	public ResponseEntity<ApiResponse<BMI>> calcBmi(@RequestParam(required = false, defaultValue = "0") Double h,
+													@RequestParam(required = false, defaultValue = "0") Double w) {
+		if(h == null || w == null) {
+			// badRequest => HTTP 400
+			return ResponseEntity.badRequest().body(ApiResponse.error("請輸入身高體重參數內容"));
+		}
+		
+		if(h <= 0 || w <= 0) {
+			// badRequest => HTTP 400
+			return ResponseEntity.badRequest().body(ApiResponse.error("身高體重參數內容錯誤"));
+		}
+		
+		double bmiValue = w / Math.pow(h/100, 2);
+		BMI bmi = new BMI(h, w, bmiValue);
+		
+		// ok => HTTP 200
+		return ResponseEntity.ok(ApiResponse.success("計算成功", bmi));
 	}
 	
 	
