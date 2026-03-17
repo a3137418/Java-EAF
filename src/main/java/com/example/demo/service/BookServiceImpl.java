@@ -1,5 +1,91 @@
 package com.example.demo.service;
 
-public class BookServiceImpl {
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import com.example.demo.SpringbootMvcApplication;
+import com.example.demo.exception.BookException;
+import com.example.demo.model.Book;
+import com.example.demo.repository.BookRepository;
+
+@Service //專門負責"邏輯服務"的元件，Spring會自動建立該物件並管理
+public class BookServiceImpl implements BookService{
+
+    private final SpringbootMvcApplication springbootMvcApplication;
+	@Autowired//自動綁定
+	@Qualifier("bookRepositoryImpl")//指定實現類
+	private BookRepository bookRepository;
+
+
+    BookServiceImpl(SpringbootMvcApplication springbootMvcApplication) {
+        this.springbootMvcApplication = springbootMvcApplication;
+    }
+	
+	
+	@Override
+	public List<Book> findAllBooks() {
+		
+		return bookRepository.findAllBooks();
+	}
+
+	@Override
+	public Book getBookById(Integer id) throws BookException {
+		Optional<Book> optBook = bookRepository.getBookById(id);
+		if (optBook.isEmpty()) {
+			throw new BookException("id:" + id + ",查無此書");
+		}
+		return optBook.get();
+	}
+
+	@Override
+	public void addBook(Book book) throws BookException {
+		if (!bookRepository.addBook(book)) {
+			throw new BookException("新增失敗,"+book);
+		}
+		
+	}
+
+	@Override
+	public void updateBook(Integer id, Book book) throws BookException {
+		if (!bookRepository.updateBook(id,book)) {
+			throw new BookException("修改失敗,id:"+id+","+book);
+		}
+	}
+
+	@Override
+	public void updateBooKName(Integer id, String name) throws BookException {
+		 Book book = getBookById(id);
+		 book.setName(name);
+		 updateBook(book.getId(), book);
+		
+	}
+
+	@Override
+	public void updateBookPrice(Integer id, Double price) throws BookException {
+		 Book book = getBookById(id);
+		 book.setPrice(price);
+		 updateBook(book.getId(), book);
+		
+	}
+
+	@Override
+	public void updateBookNameAndPrice(Integer id, String name, Double price) throws BookException {
+		 Book book = getBookById(id);
+		 book.setName(name);
+		 book.setPrice(price);
+		 updateBook(book.getId(), book);
+		
+	}
+
+	@Override
+	public void deleteBook(Integer id) throws BookException {
+		if (!bookRepository.deleteBook(id)) {
+			throw new BookException("刪除失敗,id:"+id);
+		}
+		
+	}
 
 }
