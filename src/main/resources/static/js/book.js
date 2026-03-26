@@ -38,11 +38,37 @@ findOneBtn.addEventListener("click", findBookById);
 findAllBtn.addEventListener("click", findAllBooks);
 addBtn.addEventListener("click", addBook);
 updateBtn.addEventListener("click", updateBook);
+resetBtn.addEventListener("click", ()=>{
+	bookForm.reset();
+	updateFormMode("create");
+});
+
+//頁面載入初始化
+window.addEventListener("DOMContentLoaded", () => {
+	findAllBooks();
+	updateFormMode("create");
+});
+
+
+
 
 // 顯示訊息
 function showMessage(message, type = "info") {
 	messageBox.textContent = message;
 	messageBox.className = `message-box ${type}`;
+}
+
+//統一控制模式的方法
+function updateFormMode(mode) {
+	formMode = mode;
+	
+	if(mode === "create") {
+		addBtn.disabled = false;
+		updateBtn.disabled = true;
+	} else {
+		addBtn.disabled = true;
+		updateBtn.disabled = false;
+	}
 }
 
 // 統一處理 fetch 回應
@@ -63,6 +89,8 @@ function fillForm(book){
 	bookPrice.value = book.price ?? "";
 	bookAmount.value = book.amount ?? "";
 	bookPub.checked = book.pub ?? false;
+	
+	updateFormMode('update');
 }
 
 
@@ -213,10 +241,10 @@ async function loadBookById(id){
 //刪除書籍
 async function deleteBookById(id){
 	
-	const isConfirmed = confirm("你確定要刪除書籍 ID : ${id} 嗎?");
+	const isConfirmed = confirm(`你確定要刪除書籍 ID : ${id} 嗎?`);
 	
 	if(!isConfirmed){
-		showMessage("已取消刪除書籍 ID :${id}","info");
+		showMessage(`已取消刪除書籍 ID :${id}`,"info");
 		return;
 	}
 	
