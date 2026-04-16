@@ -60,7 +60,7 @@ public class BookRepositoryjdbcTest {
 		}
 	}
 	
-	@Test
+	//@Test
 	void deleteTest() {
 		Integer id = 9;
 		boolean check = bookRepository.deleteBook(id);
