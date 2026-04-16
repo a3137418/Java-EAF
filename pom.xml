@@ -30,6 +30,20 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+		
+		<!-- JdbcTemplate (JDBC 豪華昇級版)  -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-jdbc</artifactId>
+		</dependency>
+					
+		<!-- MySQL Driver -->
+		<dependency>
+		    <groupId>com.mysql</groupId>
+		    <artifactId>mysql-connector-j</artifactId>
+		    <scope>runtime</scope>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
