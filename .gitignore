@@ -36,3 +36,4 @@ build/
 *.rar
 *.zip
 *.7z
+/.metadata/
