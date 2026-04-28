@@ -19,7 +19,7 @@ public class Topping {
 	private Integer id;
 	
 	//加料名稱:珍珠、椰果、布丁
-	@Column(length = 50 , nullable = true)
+	@Column(length = 50 , nullable = false)
 	private String name;
 	
 	//加料價格
