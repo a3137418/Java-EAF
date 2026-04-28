@@ -1,4 +1,4 @@
-package com.example.demo.repository;
+package com.example.demo.repository.book;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.model.StoryBook;
+import com.example.demo.model.book.StoryBook;
 
 @Repository
 public interface StoryBookRepository extends JpaRepository<StoryBook , Integer>{

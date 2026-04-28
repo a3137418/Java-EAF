@@ -1,13 +1,13 @@
-package com.example.demo;
+package com.example.demo.book;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.demo.model.Author;
-import com.example.demo.model.Biography;
-import com.example.demo.repository.AuthorRepository;
-import com.example.demo.repository.BiographyRepository;
+import com.example.demo.model.book.Author;
+import com.example.demo.model.book.Biography;
+import com.example.demo.repository.book.AuthorRepository;
+import com.example.demo.repository.book.BiographyRepository;
 
 @SpringBootTest
 public class Test_AddBiography {
