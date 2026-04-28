@@ -25,6 +25,7 @@ public class Test_ReadStockBook {
 		});
 		
 		//單筆查詢
+		System.out.println("\n單筆查詢:");
 		Optional<StoryBook> optStoryBook = storyBookRepository.findById(1);
 		if(optStoryBook.isPresent()) {
 			StoryBook sb = optStoryBook.get();
