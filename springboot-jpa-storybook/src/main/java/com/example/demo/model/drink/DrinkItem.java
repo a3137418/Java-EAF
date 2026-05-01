@@ -1,6 +1,7 @@
 package com.example.demo.model.drink;
 
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -46,6 +47,13 @@ public class DrinkItem {
 			inverseJoinColumns = @JoinColumn(name = "topping_id")
 			)
 	private List<Topping> toppings;
+	
+	public void addTopping(Topping topping) {
+		if (toppings == null) {
+			toppings = new CopyOnWriteArrayList<>();
+		}
+		toppings.add(topping);
+	}
 	
 	
 }
