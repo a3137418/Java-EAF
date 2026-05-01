@@ -22,7 +22,7 @@ public class CalcProxy implements Calc{
 	public Integer add(Integer x, Integer y) {
 		// 前置通知 : 驗證x,y不可以是null
 		if(x == null || y == null) {
-			System.out.println("參數不正確");
+			System.out.println("x,y 參數不正確");
 			return null;
 		}
 		//調用業務邏輯
@@ -34,7 +34,7 @@ public class CalcProxy implements Calc{
 	public Integer div(Integer x, Integer y) {
 		// 前置通知 : 驗證x,y不可以是null
 		if(x == null || y == null) {
-			System.out.println("參數不正確");
+			System.out.println("x,y 參數不正確");
 			return null;
 		}
 		try {
