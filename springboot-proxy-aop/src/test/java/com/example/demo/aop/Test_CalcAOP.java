@@ -19,5 +19,8 @@ public class Test_CalcAOP {
 		
 		Integer result2 = calc.div(20, 10);
 		System.out.println("除法結果: " + result2);
+		
+		Integer result3 = calc.div(20, 0);
+		System.out.println("除法結果: " + result3);
 	}
 }
