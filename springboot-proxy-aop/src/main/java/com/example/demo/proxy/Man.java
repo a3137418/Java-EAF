@@ -15,4 +15,8 @@ public class Man implements Person{
 		// 公用邏輯
 //		System.out.println("回家脫口罩");
 	}
+	
+	public void play() {
+		System.out.println("Man 中午午休");
+	}
 }
