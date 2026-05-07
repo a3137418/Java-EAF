@@ -34,6 +34,10 @@ public class AccessFloorAspect {
 		Integer floor = (Integer)args[1];
 		
 		
+		//username 空白或是不再資料庫，則預設為guest
+		if(username.isBlank() || !accessController.exist(username)) username = "guest";
+		
+		
 		if(accessController.hasAccess(username, floor)) {
 			System.out.printf("[AOP] %s 授權進入 %d 樓%n" ,username,floor);
 			result = joinPoint.proceed();

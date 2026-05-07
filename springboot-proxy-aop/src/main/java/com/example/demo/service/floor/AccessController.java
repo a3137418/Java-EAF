@@ -20,6 +20,12 @@ public class AccessController {
 		userFloorMap.put("security", Set.of(1, 2, 3, 4, 5)); // 保全可以到的樓層
 	}
 	
+	// 檢查名字是否有在資料庫
+	public boolean exist(String username) {
+		return userFloorMap.keySet().contains(username);
+	}
+	
+	
 	public boolean hasAccess(String username, int floor) {
 		return userFloorMap.getOrDefault(username, Set.of()).contains(floor);
 	}
