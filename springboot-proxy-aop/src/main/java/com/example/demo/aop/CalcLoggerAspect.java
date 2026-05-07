@@ -5,9 +5,11 @@ import java.util.Arrays;
 import java.util.Date;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -27,6 +29,40 @@ public class CalcLoggerAspect {
 	public void ptAdd() {}
 	@Pointcut(value = "execution(public Integer com.example.demo.proxy.CalcImpl.div(Integer , Integer))")
 	public void ptDiv() {}
+	
+	
+	//環繞通知
+	@Around("ptDiv()")
+	public Object aroundAdvice(ProceedingJoinPoint joinPoint) {
+		Object result = null;
+		String methodName = joinPoint.getSignature().getName(); // 方法名稱
+		Object[] args = joinPoint.getArgs(); // 方法參數
+		String dateTime = sdf.format(new Date());
+		
+		//前置通知
+		System.out.printf("Log 環繞通知[%s]: %s %s %n", dateTime , methodName, Arrays.toString(args));
+		
+		
+		try {
+			// 執行目標方法
+			result = joinPoint.proceed();
+			//正常返回通知
+			System.out.printf("Log 環繞通知-正常返回通知[%s]: %s %s 正常返回結果:%s %n", dateTime , methodName, Arrays.toString(args) , result);
+			
+		} catch (Throwable ex) {
+			// 異常返回通知
+			System.out.printf("Log 環繞通知-異常返回通知[%s]: %s %s 異常返回結果:%s %n", dateTime , methodName, Arrays.toString(args) , ex);
+		}finally {
+			// 後置通知
+			System.out.printf("Log 環繞通知-後置通知[%s]: %s %s %n", dateTime , methodName, Arrays.toString(args));
+		}
+		return result;
+	}
+	
+	
+	
+	
+	
 	
 	// 前置通知(Advice)
 //	@Before(value = "execution(public Integer com.example.demo.proxy.CalcImpl.add(Integer , Integer))") // 僅針對加法做前置通知
