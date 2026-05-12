@@ -11,7 +11,12 @@
     	<artifactId>nimbus-jose-jwt</artifactId>
     	<version>9.15.1</version>
 	</dependency>
-  </dependencies>
+	<dependency>
+		<groupId>com.example</groupId>
+		<artifactId>springboot-csr-book</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+    </dependencies>
   
   
   <build>
