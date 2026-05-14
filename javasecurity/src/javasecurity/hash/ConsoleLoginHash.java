@@ -43,11 +43,17 @@ public class ConsoleLoginHash {
 	}
 	
 	//註冊帳號
-	private static void register(String username , String password) throws Exception{
+	private static void register(String username, String password) throws Exception {
+		// 檢查名稱是否重複
+		if(users.containsKey(username)) {
+			System.err.printf("註冊失敗: %s 帳號已經存在%n", username);
+			return;
+		}
+		
 		String salt = generateSalt();
 		String hash = hash(password, salt);
 		// 建立使用者
-		users.put(username , new User(salt, hash));
+		users.put(username, new User(salt, hash));
 	}
 	
 	// 登入檢查
@@ -73,10 +79,27 @@ public class ConsoleLoginHash {
 	private static Map<String, User> users = new HashMap<>();
 	
 	
-	
-	
-	
-	public static void main(String[] args) {
+
+	public static void main(String[] args) throws Exception{
+		// 模擬註冊帳號
+		register("admin", "1234");
+		register("admin", "9999"); // 註冊失敗(帳號已存在)
+		register("john", "1234");
+		register("mary", "5678");
+		register("jo", "5678");
+		
+		// 查看資料庫內容 
+		users.forEach((username, user) -> {
+			System.out.printf("%-5s Salt: %s Hash: %s%n", username , user.salt , user.hash);
+		});
+
+		System.out.println("------測試登入------");
+		
+		
+		System.out.printf("admin / 1234 : %b%n" , login("admin", "1234"));
+		System.out.printf("admin / 9999 : %b%n" , login("admin", "9999"));
+		System.out.printf("mary / 5678  : %b%n" , login("mary", "5678"));
+		System.out.printf("tom / 1234   : %b%n" , login("tom", "1234"));
 		
 	}
 }
