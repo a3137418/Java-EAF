@@ -5,6 +5,7 @@ import java.nio.file.Paths;
 import java.security.KeyPair;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.util.Base64;
 
 import javasecurity.util.KeyUtil;
 
@@ -52,7 +53,17 @@ public class DigitalSignatureCreator {
 		}
 		
 		
-
+		// 數位簽章:將私鑰(私人印章) 蓋在合約(my_contract.txt)上
+		byte[] digitalSignature = KeyUtil.signWithPrivateKey(privateKey, contractPath);
+		
+		// 保存數位簽章
+		KeyUtil.saveSignatureToFile(digitalSignature, signaturePath);
+		
+		// 印出資訊
+		System.out.printf("小王的公鑰(驗證數位簽章用): %s%n" , Base64.getEncoder().encodeToString(publicKey.getEncoded()));
+		System.out.printf("小王的數位簽章: %s%n", Base64.getEncoder().encodeToString(digitalSignature));
+		System.out.printf("小王的數位簽章位置: %s%n" , signaturePath);
+	
 	}
 
 }
