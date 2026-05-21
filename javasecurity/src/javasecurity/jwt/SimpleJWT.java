@@ -1,8 +1,5 @@
 package javasecurity.jwt;
 
-import java.text.ParseException;
-
-import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jwt.JWTClaimsSet;
 
 import javasecurity.util.KeyUtil;
@@ -12,7 +9,7 @@ import javasecurity.util.KeyUtil;
  * 驗證JWT令牌
  * */
 public class SimpleJWT {
-	public static void main(String[] args) throws JOSEException, ParseException {
+	public static void main(String[] args) throws Exception {
 		// 1. 生成簽名密鑰
 		// JWK: 產生簽名用的密鑰(32 bytes)
 		String signinSecret = KeyUtil.generateSecret(32);
