@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Admin Page</title>
+	</head>
+	<body>
+		Hello <span sec:authentication="name"></span> 
+		(Role: <span sec:authentication="authorities"></span>) 
+		<p />
+		這是具有 ADMIN 角色的使用者才看得到
+	</body>
+</html>

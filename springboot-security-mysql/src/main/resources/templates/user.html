@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>User Page</title>
+	</head>
+	<body>
+		Hello <span sec:authentication="name"></span> 
+		(Role: <span sec:authentication="authorities"></span>) 
+		<p />
+		這是具有 ADMIN 或 USER 角色的使用者才看得到 <p />
+		
+		<div sec:authorize="hasRole('ADMIN')">
+			ADMIN 才看得到 I
+		</div>
+		<div sec:authorize="hasAuthority('ROLE_ADMIN')">
+			ADMIN 才看得到 II
+		</div>
+		
+		<div sec:authorize="hasRole('USER')">
+			USER 才看得到 I
+		</div>
+		<div sec:authorize="hasAuthority('ROLE_USER')">
+			USER 才看得到 II
+		</div>
+	</body>
+</html>
