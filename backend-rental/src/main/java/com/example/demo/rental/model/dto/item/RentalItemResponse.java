@@ -2,6 +2,8 @@ package com.example.demo.rental.model.dto.item;
 
 import java.math.BigDecimal;
 
+import com.example.demo.rental.model.enums.ItemStatus;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

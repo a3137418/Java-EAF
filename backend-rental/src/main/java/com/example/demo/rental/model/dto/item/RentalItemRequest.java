@@ -23,6 +23,10 @@ public class RentalItemRequest {
 	@NotBlank(message = "每小時價格不可空白")
 	@DecimalMin(value = "0.0" , inclusive = false)
 	private BigDecimal pricePerHour;
+	
 	private ItemStatus status = ItemStatus.AVAILABLE;
+	
 	private String description;
+	
+	private String imageUrl;
 }
