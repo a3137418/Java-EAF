@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +25,6 @@ public class Teacher {
 	// 一位老師可以有多門課程
     // mappedBy 對應 Course 裡面的 teacher 欄位
 	@OneToMany(mappedBy = "teacher")
-	private Course course;
+	private List<Course> courses;
 	
 }

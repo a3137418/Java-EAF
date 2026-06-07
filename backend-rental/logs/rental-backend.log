@@ -1,5 +1,7 @@
-2026-06-05T09:51:49.237+08:00  WARN 19636 --- [backend-rental] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11h46m35s116ms576µs600ns).
-2026-06-05T21:24:19.774+08:00  WARN 19636 --- [backend-rental] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10h18m32s65ms848µs700ns).
-2026-06-05T21:49:28.543+08:00  INFO 19636 --- [backend-rental] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-05T21:49:28.543+08:00  INFO 19636 --- [backend-rental] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-06-05T21:49:28.562+08:00  INFO 19636 --- [backend-rental] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
+2026-06-07T14:56:59.623+08:00  WARN 19636 --- [backend-rental] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1d11h37m9s252ms132µs).
+2026-06-07T17:08:55.285+08:00  INFO 19636 --- [backend-rental] [RMI TCP Connection(881)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2026-06-07T17:08:55.304+08:00  INFO 19636 --- [backend-rental] [RMI TCP Connection(881)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-07T17:08:55.392+08:00  INFO 19636 --- [backend-rental] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-06-07T17:08:55.408+08:00  INFO 19636 --- [backend-rental] [RMI TCP Connection(881)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-07T17:08:55.423+08:00  INFO 19636 --- [backend-rental] [RMI TCP Connection(881)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-07T17:08:55.427+08:00  INFO 19636 --- [backend-rental] [RMI TCP Connection(881)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

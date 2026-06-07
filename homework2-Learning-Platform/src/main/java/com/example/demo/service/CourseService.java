@@ -44,7 +44,7 @@ public class CourseService {
 	
 	
 	// 刪除課程
-	public void daleteCourse(Long id) {
+	public void deleteCourse(Long id) {
 		courseRepository.deleteById(id);
 	}
 }
