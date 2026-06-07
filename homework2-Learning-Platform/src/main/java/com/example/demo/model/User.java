@@ -7,6 +7,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
@@ -17,13 +19,15 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+	@NotBlank(message = "帳號不可空白")
 	private String username;
-	
+
+	@NotBlank(message = "Email 不可空白")
+	@Email(message = "Email 格式不正確")
 	private String email;
-	
-	// 加上 cascade 和 orphanRemoval 是為了滿足作業級聯刪除的需求
-	@OneToOne(mappedBy = "user" , cascade = CascadeType.ALL , orphanRemoval = true)
+
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private UserProfile userProfile;
-	
+
 }

@@ -20,9 +20,12 @@ public class CourseService {
 	private TeacherRepository teacherRepository;
 	
 	// 新增課程(指定講師)
-	public Course saveCourse(Long teacherId , Course course) {
+	public Course saveCourse(Long teacherId, Course course) {
+		if (courseRepository.existsByTitle(course.getTitle())) {
+			throw new IllegalArgumentException("課程「" + course.getTitle() + "」已存在，不可重複新增");
+		}
 		Teacher teacher = teacherRepository.findById(teacherId)
-				.orElseThrow(() -> new RuntimeException("Teacher not found"));
+				.orElseThrow(() -> new RuntimeException("找不到該講師"));
 		course.setTeacher(teacher);
 		return courseRepository.save(course);
 	}
@@ -33,12 +36,14 @@ public class CourseService {
 	}
 	
 	// 修改課程
-	public Course updateCourse(Long id , Course update) {
+	public Course updateCourse(Long id, Course update) {
 		Course existing = courseRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Course not found"));
+				.orElseThrow(() -> new RuntimeException("找不到該課程"));
+		if (courseRepository.existsByTitleAndIdNot(update.getTitle(), id)) {
+			throw new IllegalArgumentException("課程名稱「" + update.getTitle() + "」已被其他課程使用");
+		}
 		existing.setTitle(update.getTitle());
 		existing.setPrice(update.getPrice());
-		
 		return courseRepository.save(existing);
 	}
 	

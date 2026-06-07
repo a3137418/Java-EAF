@@ -11,24 +11,28 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "")
+@Table(name = "students")
 public class Student {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+	@NotBlank(message = "學生姓名不可空白")
 	private String name;
-	
+
+	private String email;
+
 	@ManyToMany
 	@JoinTable(
-			name = "student_course",// 中間表的名稱
-			joinColumns = @JoinColumn(name = "student_id"), // 本身(Student)的外鍵
-			inverseJoinColumns = @JoinColumn(name = "course_id") // 對方(Course)的外鍵
+			name = "student_course",
+			joinColumns = @JoinColumn(name = "student_id"),
+			inverseJoinColumns = @JoinColumn(name = "course_id")
 	)
 	private List<Course> courses = new ArrayList<>();
 }

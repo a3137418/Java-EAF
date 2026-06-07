@@ -6,4 +6,7 @@ import com.example.demo.model.Course;
 
 public interface CourseRepository extends JpaRepository<Course, Long>{
 
+	boolean existsByTitle(String title);
+
+	boolean existsByTitleAndIdNot(String title, Long id);
 }

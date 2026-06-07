@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jakarta.validation.Valid;
+
 import com.example.demo.model.Teacher;
 import com.example.demo.service.TeacherService;
 
@@ -28,7 +30,7 @@ public class TeacherController {
 	// 新增講師
 	@PostMapping
 	@ResponseBody
-	public Teacher create(@RequestBody Teacher teacher) {
+	public Teacher create(@Valid @RequestBody Teacher teacher) {
 		return teacherService.saveTeacher(teacher);
 	}
 	
@@ -42,7 +44,7 @@ public class TeacherController {
 	// 修改講師
 	@PutMapping("/{id}")
 	@ResponseBody
-	public Teacher update(@PathVariable Long id, @RequestBody Teacher teacher) {
+	public Teacher update(@PathVariable Long id, @Valid @RequestBody Teacher teacher) {
 		return teacherService.updateTeacher(id, teacher);
 	}
 	

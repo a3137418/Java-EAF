@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jakarta.validation.Valid;
+
 import com.example.demo.model.Course;
 import com.example.demo.service.CourseService;
 
@@ -30,7 +32,7 @@ public class CourseController {
 	// 新增課程(指定講師id)
 	@PostMapping
 	@ResponseBody
-	public Course create(@RequestParam Long teacherId , @RequestBody Course course) {
+	public Course create(@RequestParam Long teacherId, @Valid @RequestBody Course course) {
 		return courseService.saveCourse(teacherId, course);
 	}
 	
@@ -44,7 +46,7 @@ public class CourseController {
 	// 修改課程
 	@PutMapping("/{id}")
 	@ResponseBody
-	public Course update(@PathVariable Long id , @RequestBody Course course) {
+	public Course update(@PathVariable Long id, @Valid @RequestBody Course course) {
 		return courseService.updateCourse(id, course);
 	}
 	

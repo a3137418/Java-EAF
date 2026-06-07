@@ -17,6 +17,9 @@ public class TeacherService {
 	
 	// 新增講師
 	public Teacher saveTeacher(Teacher teacher) {
+		if (teacherRepository.existsByName(teacher.getName())) {
+			throw new IllegalArgumentException("講師「" + teacher.getName() + "」已存在，不可重複新增");
+		}
 		return teacherRepository.save(teacher);
 	}
 	
@@ -26,9 +29,12 @@ public class TeacherService {
 	}
 	
 	// 修改講師
-	public Teacher updateTeacher(Long id , Teacher updated) {
+	public Teacher updateTeacher(Long id, Teacher updated) {
 		Teacher existing = teacherRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Teacher not found"));
+				.orElseThrow(() -> new RuntimeException("找不到該講師"));
+		if (teacherRepository.existsByNameAndIdNot(updated.getName(), id)) {
+			throw new IllegalArgumentException("講師名稱「" + updated.getName() + "」已被其他講師使用");
+		}
 		existing.setName(updated.getName());
 		existing.setExpertise(updated.getExpertise());
 		return teacherRepository.save(existing);

@@ -22,6 +22,7 @@ public class UserProfile {
 	private String phoneNumber;
 	private String bio;
 	
+	@com.fasterxml.jackson.annotation.JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	private User user;

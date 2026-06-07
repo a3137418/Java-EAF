@@ -6,4 +6,5 @@ import com.example.demo.model.Student;
 
 public interface StudentRepository extends JpaRepository<Student, Long>{
 
+	boolean existsByName(String name);
 }

@@ -1,10 +1,558 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Platform 管理系統</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; color: #333; }
+
+    header {
+      background: #1a237e; color: #fff;
+      padding: 16px 32px; font-size: 20px; font-weight: bold;
+    }
+
+    .tabs { display: flex; background: #283593; padding: 0 32px; }
+    .tab-btn {
+      padding: 12px 22px; color: #c5cae9; cursor: pointer;
+      border: none; background: none; font-size: 14px;
+      border-bottom: 3px solid transparent;
+    }
+    .tab-btn.active { color: #fff; border-bottom-color: #ff6f00; }
+    .tab-btn:hover { color: #fff; }
+
+    .container { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
+    .section { display: none; }
+    .section.active { display: block; }
+
+    .card {
+      background: #fff; border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.1); padding: 24px; margin-bottom: 24px;
+    }
+    .card h2 {
+      font-size: 15px; margin-bottom: 16px; color: #1a237e;
+      border-left: 4px solid #ff6f00; padding-left: 10px;
+    }
+
+    .form-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
+    .form-group { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 130px; }
+    .form-group label { font-size: 12px; color: #666; }
+    .form-group input, .form-group select {
+      padding: 8px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;
+    }
+    .form-group input:focus, .form-group select:focus {
+      outline: none; border-color: #1a237e;
+    }
+
+    .btn {
+      padding: 8px 16px; border: none; border-radius: 4px;
+      cursor: pointer; font-size: 13px; white-space: nowrap;
+    }
+    .btn-primary { background: #1a237e; color: #fff; }
+    .btn-primary:hover { background: #283593; }
+    .btn-danger  { background: #c62828; color: #fff; }
+    .btn-danger:hover  { background: #b71c1c; }
+    .btn-warning { background: #e65100; color: #fff; }
+    .btn-warning:hover { background: #bf360c; }
+    .btn-success { background: #2e7d32; color: #fff; }
+    .btn-success:hover { background: #1b5e20; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { background: #e8eaf6; color: #1a237e; padding: 10px 12px; text-align: left; }
+    td { padding: 9px 12px; border-bottom: 1px solid #eee; }
+    tr:hover td { background: #fafafa; }
+
+    .tag {
+      display: inline-block; background: #e3f2fd; color: #1565c0;
+      padding: 2px 8px; border-radius: 12px; font-size: 12px; margin: 2px;
+    }
+
+    .toast {
+      position: fixed; bottom: 24px; right: 24px;
+      background: #2e7d32; color: #fff; padding: 12px 20px;
+      border-radius: 4px; font-size: 14px; opacity: 0;
+      transition: opacity .3s; z-index: 9999; pointer-events: none;
+    }
+    .toast.show { opacity: 1; }
+
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,.4); z-index: 1000;
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      background: #fff; border-radius: 8px; padding: 28px;
+      width: 420px; max-width: 95vw;
+    }
+    .modal h3 { margin-bottom: 16px; color: #1a237e; font-size: 16px; }
+    .modal-body { display: flex; flex-direction: column; gap: 12px; }
+    .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+
+    .enroll-log { margin-top: 12px; max-height: 180px; overflow-y: auto; }
+    .enroll-item {
+      padding: 8px 12px; background: #f1f8e9; border-left: 3px solid #2e7d32;
+      border-radius: 0 4px 4px 0; margin-bottom: 6px; font-size: 13px;
+    }
+  </style>
 </head>
 <body>
 
+<header>Learning Platform 管理系統</header>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('teacher',this)">講師管理</button>
+  <button class="tab-btn" onclick="switchTab('course',this)">課程管理</button>
+  <button class="tab-btn" onclick="switchTab('student',this)">學生與選課</button>
+  <button class="tab-btn" onclick="switchTab('user',this)">使用者管理</button>
+</div>
+
+<div class="container">
+
+  <!-- ===== 講師管理 ===== -->
+  <div id="sec-teacher" class="section active">
+    <div class="card">
+      <h2>新增講師</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>講師姓名</label>
+          <input id="t-name" placeholder="e.g. Vincent Tuan" />
+        </div>
+        <div class="form-group">
+          <label>專業專長</label>
+          <input id="t-expertise" placeholder="e.g. Java 全架構" />
+        </div>
+        <button class="btn btn-primary" onclick="createTeacher()">新增講師</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>講師清單</h2>
+      <table>
+        <thead><tr><th>ID</th><th>姓名</th><th>專長</th><th>操作</th></tr></thead>
+        <tbody id="teacher-tbody"><tr><td colspan="4" style="color:#aaa">載入中...</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== 課程管理 ===== -->
+  <div id="sec-course" class="section">
+    <div class="card">
+      <h2>新增課程</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>課程名稱</label>
+          <input id="c-title" placeholder="e.g. JavaOCP" />
+        </div>
+        <div class="form-group" style="max-width:130px">
+          <label>售價 (NT$)</label>
+          <input id="c-price" type="number" placeholder="3600" />
+        </div>
+        <div class="form-group">
+          <label>授課講師</label>
+          <select id="c-teacher"><option value="">-- 選擇講師 --</option></select>
+        </div>
+        <button class="btn btn-primary" onclick="createCourse()">新增課程</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>課程清單</h2>
+      <table>
+        <thead><tr><th>ID</th><th>課程名稱</th><th>售價</th><th>授課講師</th><th>操作</th></tr></thead>
+        <tbody id="course-tbody"><tr><td colspan="5" style="color:#aaa">載入中...</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== 學生與選課 ===== -->
+  <div id="sec-student" class="section">
+    <div class="card">
+      <h2>新增學生</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>學生姓名</label>
+          <input id="s-name" placeholder="e.g. Jian-Hua Lin" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input id="s-email" placeholder="e.g. jianhua@example.com" />
+        </div>
+        <button class="btn btn-primary" onclick="createStudent()">新增學生</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>快速選課</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>學生</label>
+          <select id="enroll-student"><option value="">-- 選擇學生 --</option></select>
+        </div>
+        <div class="form-group">
+          <label>課程</label>
+          <select id="enroll-course"><option value="">-- 選擇課程 --</option></select>
+        </div>
+        <button class="btn btn-success" onclick="enrollCourse()">確認選課</button>
+      </div>
+      <div class="enroll-log" id="enroll-log"></div>
+    </div>
+
+    <div class="card">
+      <h2>學生清單</h2>
+      <table>
+        <thead><tr><th>ID</th><th>姓名</th><th>Email</th><th>已選課程</th></tr></thead>
+        <tbody id="student-tbody"><tr><td colspan="4" style="color:#aaa">載入中...</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== 使用者管理 ===== -->
+  <div id="sec-user" class="section">
+    <div class="card">
+      <h2>新增使用者（含個人檔案）</h2>
+      <div class="form-row" style="margin-bottom:10px">
+        <div class="form-group">
+          <label>帳號 (username)</label>
+          <input id="u-username" placeholder="e.g. jianhua_lin" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input id="u-email" placeholder="e.g. jianhua@example.com" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>全名 (fullName)</label>
+          <input id="u-fullname" placeholder="e.g. Jian-Hua Lin" />
+        </div>
+        <div class="form-group">
+          <label>電話</label>
+          <input id="u-phone" placeholder="0912345678" />
+        </div>
+        <div class="form-group" style="flex:2">
+          <label>自我介紹 (bio)</label>
+          <input id="u-bio" placeholder="簡短介紹..." />
+        </div>
+        <button class="btn btn-primary" onclick="createUser()">新增使用者</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>刪除使用者（同時刪除 UserProfile）</h2>
+      <div class="form-row">
+        <div class="form-group" style="max-width:160px">
+          <label>使用者 ID</label>
+          <input id="u-del-id" type="number" placeholder="輸入 ID" />
+        </div>
+        <button class="btn btn-danger" onclick="deleteUser()">刪除使用者</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 編輯講師 Modal -->
+<div id="modal-teacher" class="modal-overlay">
+  <div class="modal">
+    <h3>編輯講師</h3>
+    <input type="hidden" id="edit-t-id" />
+    <div class="modal-body">
+      <div class="form-group">
+        <label>講師姓名</label>
+        <input id="edit-t-name" />
+      </div>
+      <div class="form-group">
+        <label>專業專長</label>
+        <input id="edit-t-expertise" />
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal('modal-teacher')" style="background:#eee">取消</button>
+      <button class="btn btn-primary" onclick="updateTeacher()">儲存</button>
+    </div>
+  </div>
+</div>
+
+<!-- 編輯課程 Modal -->
+<div id="modal-course" class="modal-overlay">
+  <div class="modal">
+    <h3>編輯課程</h3>
+    <input type="hidden" id="edit-c-id" />
+    <div class="modal-body">
+      <div class="form-group">
+        <label>課程名稱</label>
+        <input id="edit-c-title" />
+      </div>
+      <div class="form-group">
+        <label>售價</label>
+        <input id="edit-c-price" type="number" />
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal('modal-course')" style="background:#eee">取消</button>
+      <button class="btn btn-primary" onclick="updateCourse()">儲存</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+  const API = 'http://localhost:8080/api';
+
+  function showToast(msg, ok = true) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.background = ok ? '#2e7d32' : '#c62828';
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  function switchTab(name, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('sec-' + name).classList.add('active');
+    btn.classList.add('active');
+    if (name === 'course')  { loadTeacherDropdown(); loadCourses(); }
+    if (name === 'student') { loadStudents(); loadCourseDropdown(); }
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('show');
+  }
+
+  async function req(url, method = 'GET', body = null) {
+    const opts = { method, headers: { 'Content-Type': 'application/json' } };
+    if (body) opts.body = JSON.stringify(body);
+    const res = await fetch(API + url, opts);
+    if (!res.ok) throw new Error(await res.text());
+    const ct = res.headers.get('content-type') || '';
+    return ct.includes('json') ? res.json() : res.text();
+  }
+
+  // ===== 講師 =====
+  async function loadTeachers() {
+    try {
+      const data = await req('/teachers');
+      document.getElementById('teacher-tbody').innerHTML = data.length === 0
+        ? '<tr><td colspan="4" style="color:#aaa">目前無講師資料</td></tr>'
+        : data.map(t => `
+          <tr>
+            <td>${t.id}</td><td>${t.name}</td><td>${t.expertise}</td>
+            <td>
+              <button class="btn btn-warning" style="font-size:12px;padding:4px 10px"
+                onclick="openEditTeacher(${t.id},'${escQ(t.name)}','${escQ(t.expertise)}')">編輯</button>
+              <button class="btn btn-danger" style="font-size:12px;padding:4px 10px;margin-left:4px"
+                onclick="deleteTeacher(${t.id})">刪除</button>
+            </td>
+          </tr>`).join('');
+    } catch(e) { showToast('載入講師失敗', false); }
+  }
+
+  async function loadTeacherDropdown() {
+    try {
+      const data = await req('/teachers');
+      const sel = document.getElementById('c-teacher');
+      sel.innerHTML = '<option value="">-- 選擇講師 --</option>'
+        + data.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
+    } catch(e) {}
+  }
+
+  async function createTeacher() {
+    const name = document.getElementById('t-name').value.trim();
+    const expertise = document.getElementById('t-expertise').value.trim();
+    if (!name || !expertise) return showToast('請填寫所有欄位', false);
+    try {
+      await req('/teachers', 'POST', { name, expertise });
+      showToast('講師新增成功');
+      document.getElementById('t-name').value = '';
+      document.getElementById('t-expertise').value = '';
+      loadTeachers();
+    } catch(e) { showToast('新增失敗：' + e.message, false); }
+  }
+
+  function openEditTeacher(id, name, expertise) {
+    document.getElementById('edit-t-id').value = id;
+    document.getElementById('edit-t-name').value = name;
+    document.getElementById('edit-t-expertise').value = expertise;
+    document.getElementById('modal-teacher').classList.add('show');
+  }
+
+  async function updateTeacher() {
+    const id = document.getElementById('edit-t-id').value;
+    const name = document.getElementById('edit-t-name').value.trim();
+    const expertise = document.getElementById('edit-t-expertise').value.trim();
+    try {
+      await req('/teachers/' + id, 'PUT', { name, expertise });
+      showToast('講師更新成功');
+      closeModal('modal-teacher');
+      loadTeachers();
+    } catch(e) { showToast('更新失敗：' + e.message, false); }
+  }
+
+  async function deleteTeacher(id) {
+    if (!confirm('確定刪除這位講師？')) return;
+    try {
+      await req('/teachers/' + id, 'DELETE');
+      showToast('講師已刪除');
+      loadTeachers();
+    } catch(e) { showToast('刪除失敗：' + e.message, false); }
+  }
+
+  // ===== 課程 =====
+  async function loadCourses() {
+    try {
+      const data = await req('/courses');
+      document.getElementById('course-tbody').innerHTML = data.length === 0
+        ? '<tr><td colspan="5" style="color:#aaa">目前無課程資料</td></tr>'
+        : data.map(c => `
+          <tr>
+            <td>${c.id}</td><td>${c.title}</td>
+            <td>NT$ ${c.price}</td>
+            <td>${c.teacher ? c.teacher.name : '—'}</td>
+            <td>
+              <button class="btn btn-warning" style="font-size:12px;padding:4px 10px"
+                onclick="openEditCourse(${c.id},'${escQ(c.title)}',${c.price})">編輯</button>
+              <button class="btn btn-danger" style="font-size:12px;padding:4px 10px;margin-left:4px"
+                onclick="deleteCourse(${c.id})">刪除</button>
+            </td>
+          </tr>`).join('');
+    } catch(e) { showToast('載入課程失敗', false); }
+  }
+
+  async function createCourse() {
+    const title = document.getElementById('c-title').value.trim();
+    const price = document.getElementById('c-price').value;
+    const teacherId = document.getElementById('c-teacher').value;
+    if (!title || !price || !teacherId) return showToast('請填寫所有欄位並選擇講師', false);
+    try {
+      await req('/courses?teacherId=' + teacherId, 'POST', { title, price: Number(price) });
+      showToast('課程新增成功');
+      document.getElementById('c-title').value = '';
+      document.getElementById('c-price').value = '';
+      loadCourses();
+    } catch(e) { showToast('新增失敗：' + e.message, false); }
+  }
+
+  function openEditCourse(id, title, price) {
+    document.getElementById('edit-c-id').value = id;
+    document.getElementById('edit-c-title').value = title;
+    document.getElementById('edit-c-price').value = price;
+    document.getElementById('modal-course').classList.add('show');
+  }
+
+  async function updateCourse() {
+    const id = document.getElementById('edit-c-id').value;
+    const title = document.getElementById('edit-c-title').value.trim();
+    const price = Number(document.getElementById('edit-c-price').value);
+    try {
+      await req('/courses/' + id, 'PUT', { title, price });
+      showToast('課程更新成功');
+      closeModal('modal-course');
+      loadCourses();
+    } catch(e) { showToast('更新失敗：' + e.message, false); }
+  }
+
+  async function deleteCourse(id) {
+    if (!confirm('確定刪除這門課程？')) return;
+    try {
+      await req('/courses/' + id, 'DELETE');
+      showToast('課程已刪除');
+      loadCourses();
+    } catch(e) { showToast('刪除失敗：' + e.message, false); }
+  }
+
+  // ===== 學生 =====
+  async function loadStudents() {
+    try {
+      const data = await req('/students');
+      document.getElementById('student-tbody').innerHTML = data.length === 0
+        ? '<tr><td colspan="4" style="color:#aaa">目前無學生資料</td></tr>'
+        : data.map(s => {
+            const tags = (s.courses || []).map(c => `<span class="tag">${c.title}</span>`).join('');
+            return `<tr>
+              <td>${s.id}</td><td>${s.name}</td><td>${s.email || '—'}</td>
+              <td>${tags || '<span style="color:#aaa">尚未選課</span>'}</td>
+            </tr>`;
+          }).join('');
+      const sel = document.getElementById('enroll-student');
+      sel.innerHTML = '<option value="">-- 選擇學生 --</option>'
+        + data.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+    } catch(e) { showToast('載入學生失敗', false); }
+  }
+
+  async function loadCourseDropdown() {
+    try {
+      const data = await req('/courses');
+      const sel = document.getElementById('enroll-course');
+      sel.innerHTML = '<option value="">-- 選擇課程 --</option>'
+        + data.map(c => `<option value="${c.id}">${c.title}</option>`).join('');
+    } catch(e) {}
+  }
+
+  async function createStudent() {
+    const name = document.getElementById('s-name').value.trim();
+    const email = document.getElementById('s-email').value.trim();
+    if (!name) return showToast('請輸入學生姓名', false);
+    try {
+      await req('/students', 'POST', { name, email });
+      showToast('學生新增成功');
+      document.getElementById('s-name').value = '';
+      document.getElementById('s-email').value = '';
+      loadStudents();
+    } catch(e) { showToast('新增失敗：' + e.message, false); }
+  }
+
+  async function enrollCourse() {
+    const studentId = document.getElementById('enroll-student').value;
+    const courseId = document.getElementById('enroll-course').value;
+    if (!studentId || !courseId) return showToast('請選擇學生與課程', false);
+    try {
+      await req(`/students/${studentId}/enroll/${courseId}`, 'POST');
+      const sName = document.getElementById('enroll-student').selectedOptions[0].text;
+      const cName = document.getElementById('enroll-course').selectedOptions[0].text;
+      showToast('選課成功');
+      const log = document.getElementById('enroll-log');
+      const item = document.createElement('div');
+      item.className = 'enroll-item';
+      item.textContent = `✓ ${sName} 選修了《${cName}》`;
+      log.prepend(item);
+      loadStudents();
+    } catch(e) { showToast('選課失敗：' + e.message, false); }
+  }
+
+  // ===== 使用者 =====
+  async function createUser() {
+    const username = document.getElementById('u-username').value.trim();
+    const email = document.getElementById('u-email').value.trim();
+    const fullName = document.getElementById('u-fullname').value.trim();
+    const phoneNumber = document.getElementById('u-phone').value.trim();
+    const bio = document.getElementById('u-bio').value.trim();
+    if (!username || !email || !fullName) return showToast('請填寫帳號、Email 與全名', false);
+    try {
+      await req('/users', 'POST', { username, email, userProfile: { fullName, phoneNumber, bio } });
+      showToast('使用者新增成功');
+      ['u-username','u-email','u-fullname','u-phone','u-bio'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+    } catch(e) { showToast('新增失敗：' + e.message, false); }
+  }
+
+  async function deleteUser() {
+    const id = document.getElementById('u-del-id').value;
+    if (!id) return showToast('請輸入使用者 ID', false);
+    if (!confirm(`確定刪除使用者 ID=${id}（同時刪除 UserProfile）？`)) return;
+    try {
+      await req('/users/' + id, 'DELETE');
+      showToast('使用者已刪除（含 Profile）');
+      document.getElementById('u-del-id').value = '';
+    } catch(e) { showToast('刪除失敗：' + e.message, false); }
+  }
+
+  // 防止單引號破壞 onclick 屬性
+  function escQ(str) { return String(str).replace(/'/g, "\\'"); }
+
+  // 初始化
+  loadTeachers();
+</script>
 </body>
 </html>

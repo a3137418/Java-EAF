@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jakarta.validation.Valid;
+
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 
@@ -24,7 +26,7 @@ public class UserController {
 	//新增使用者
 	@PostMapping
 	@ResponseBody
-	public User create(@RequestBody User user) {
+	public User create(@Valid @RequestBody User user) {
 		return userService.saveUser(user);
 	}
 	
