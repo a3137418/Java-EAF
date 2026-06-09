@@ -19,7 +19,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 	
 	@Query("""
 		    SELECT COUNT(r) > 0 FROM Reservation r
-		    WHERE r.id = :itemId
+		    WHERE r.item.id = :itemId
 		        AND r.status IN :statuses
 		        AND r.startTime < :newEndTime
 		        AND r.endTime > :newStartTime
@@ -31,11 +31,10 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 	    @Param("newStartTime") LocalDateTime newStartTime
 	);
 	
-	/*
-	boolean existsByItemIdAndStatusInStartTimeLessThanAndEndTimeGreaterThan(
-			Long itemId, 
-			Collection<ReservationStatus> statuses, 
-			LocalDateTime newEndTime,
-			LocalDateTime startEndTime);
-	*/		
+	boolean existsByItemIdAndStatusInAndStartTimeLessThanAndEndTimeGreaterThan(
+            Long itemId,
+            Collection<ReservationStatus> statuses,
+            LocalDateTime newEndTime,
+            LocalDateTime newStartTime
+    );	
 }
