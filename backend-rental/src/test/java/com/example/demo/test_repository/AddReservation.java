@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.test_repository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
