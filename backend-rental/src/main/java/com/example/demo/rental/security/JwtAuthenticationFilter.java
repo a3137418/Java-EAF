@@ -64,7 +64,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			String username = jwtService.extractUsername(token);
 			
 			//5.根據 username 查詢使用者資料
-			if (username != null || SecurityContextHolder.getContext().getAuthentication() == null) {
+			if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 				
 				UserDetails userDetails = appUserDetailsService.loadUserByUsername(username);
 				

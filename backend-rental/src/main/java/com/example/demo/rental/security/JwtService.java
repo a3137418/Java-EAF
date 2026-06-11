@@ -9,6 +9,7 @@ import javax.crypto.SecretKey;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -30,6 +31,7 @@ import io.jsonwebtoken.security.Keys;
  * 之後每次前端調用後端服務的時候會把這組 Token 放在 Authorization Header 裡面迴船後端
  * 後端再透過此 JWTService 判斷 Token 是否正確
  * */
+@Service
 public class JwtService {
 
 	private SecretKey key;// JWT 簽章用的密鑰
