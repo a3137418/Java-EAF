@@ -95,11 +95,62 @@
       padding: 8px 12px; background: #f1f8e9; border-left: 3px solid #2e7d32;
       border-radius: 0 4px 4px 0; margin-bottom: 6px; font-size: 13px;
     }
+
+    /* 登入覆蓋層 */
+    #login-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,.55); z-index: 2000;
+      align-items: center; justify-content: center;
+    }
+    #login-overlay.show { display: flex; }
+    #login-box {
+      background: #fff; border-radius: 10px; padding: 36px 40px;
+      width: 360px; max-width: 95vw; box-shadow: 0 8px 32px rgba(0,0,0,.25);
+    }
+    #login-box h2 { color: #1a237e; margin-bottom: 20px; font-size: 18px; text-align: center; }
+    #login-box .form-group { margin-bottom: 14px; }
+    #login-box input { width: 100%; padding: 9px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+    #login-box input:focus { outline: none; border-color: #1a237e; }
+    #login-btn { width: 100%; padding: 10px; margin-top: 6px; font-size: 15px; }
+    #login-error { color: #c62828; font-size: 13px; margin-top: 10px; text-align: center; min-height: 18px; }
+
+    /* 頂部 header 右側使用者資訊 */
+    header { display: flex; align-items: center; justify-content: space-between; }
+    #user-info { font-size: 13px; color: #c5cae9; display: flex; align-items: center; gap: 12px; }
+    #btn-logout {
+      padding: 5px 12px; border: 1px solid #c5cae9; border-radius: 4px;
+      background: transparent; color: #c5cae9; cursor: pointer; font-size: 12px;
+    }
+    #btn-logout:hover { background: rgba(255,255,255,.15); }
   </style>
 </head>
 <body>
 
-<header>Learning Platform 管理系統</header>
+<!-- 登入覆蓋層 -->
+<div id="login-overlay">
+  <div id="login-box">
+    <h2>Learning Platform 登入</h2>
+    <div class="form-group">
+      <label style="font-size:12px;color:#666">帳號</label>
+      <input id="login-username" placeholder="username" />
+    </div>
+    <div class="form-group">
+      <label style="font-size:12px;color:#666">密碼</label>
+      <input id="login-password" type="password" placeholder="password"
+             onkeydown="if(event.key==='Enter') doLogin()" />
+    </div>
+    <button class="btn btn-primary" id="login-btn" onclick="doLogin()">登入</button>
+    <div id="login-error"></div>
+  </div>
+</div>
+
+<header>
+  <span>Learning Platform 管理系統</span>
+  <div id="user-info" style="display:none">
+    <span id="user-label"></span>
+    <button id="btn-logout" onclick="doLogout()">登出</button>
+  </div>
+</header>
 
 <div class="tabs">
   <button class="tab-btn active" onclick="switchTab('teacher',this)">講師管理</button>
@@ -284,6 +335,56 @@
 <script>
   const API = 'http://localhost:8080/api';
 
+  // ===== 登入 / 登出 =====
+  function getToken() { return localStorage.getItem('jwt'); }
+  function getRole()  { return localStorage.getItem('role'); }
+
+  function showLoginOverlay() {
+    document.getElementById('login-overlay').classList.add('show');
+    document.getElementById('user-info').style.display = 'none';
+    document.getElementById('login-error').textContent = '';
+    document.getElementById('login-username').value = '';
+    document.getElementById('login-password').value = '';
+  }
+
+  function hideLoginOverlay(username, role) {
+    document.getElementById('login-overlay').classList.remove('show');
+    document.getElementById('user-info').style.display = '';
+    document.getElementById('user-label').textContent = username + '（' + role + '）';
+  }
+
+  async function doLogin() {
+    const username = document.getElementById('login-username').value.trim();
+    const password = document.getElementById('login-password').value;
+    const errEl = document.getElementById('login-error');
+    errEl.textContent = '';
+    if (!username || !password) { errEl.textContent = '請輸入帳號與密碼'; return; }
+    try {
+      const res = await fetch(API + '/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await res.json();
+      if (!res.ok) { errEl.textContent = data.error || '登入失敗'; return; }
+      localStorage.setItem('jwt', data.token);
+      localStorage.setItem('role', data.role);
+      localStorage.setItem('username', username);
+      hideLoginOverlay(username, data.role);
+      loadTeachers();
+    } catch(e) {
+      errEl.textContent = '無法連線至伺服器';
+    }
+  }
+
+  function doLogout() {
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('role');
+    localStorage.removeItem('username');
+    showLoginOverlay();
+  }
+
+  // ===== 工具函式 =====
   function showToast(msg, ok = true) {
     const t = document.getElementById('toast');
     t.textContent = msg;
@@ -306,9 +407,20 @@
   }
 
   async function req(url, method = 'GET', body = null) {
-    const opts = { method, headers: { 'Content-Type': 'application/json' } };
+    const token = getToken();
+    const opts = {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token ? { 'Authorization': 'Bearer ' + token } : {})
+      }
+    };
     if (body) opts.body = JSON.stringify(body);
     const res = await fetch(API + url, opts);
+    if (res.status === 401 || res.status === 403) {
+      doLogout();
+      throw new Error('請重新登入');
+    }
     if (!res.ok) throw new Error(await res.text());
     const ct = res.headers.get('content-type') || '';
     return ct.includes('json') ? res.json() : res.text();
@@ -525,11 +637,15 @@
     } catch(e) { showToast('刪除失敗：' + e.message, false); }
   }
 
-  // 防止單引號破壞 onclick 屬性
   function escQ(str) { return String(str).replace(/'/g, "\\'"); }
 
-  // 初始化
-  loadTeachers();
+  // 初始化：有 token 就直接進入，否則顯示登入畫面
+  if (getToken()) {
+    hideLoginOverlay(localStorage.getItem('username') || '?', getRole() || '');
+    loadTeachers();
+  } else {
+    showLoginOverlay();
+  }
 </script>
 </body>
 </html>
