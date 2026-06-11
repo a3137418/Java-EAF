@@ -45,6 +45,11 @@ public class UserService {
 	public String enrollCourse(Long userId, Long courseId) {
 		User user = userRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("找不到該使用者"));
+		// 付費卡關
+		if(!user.isPaid()) {
+			throw new IllegalArgumentException("未繳費，無法選課");
+		}
+		
 		Course course = courseRepository.findById(courseId)
 				.orElseThrow(() -> new ResourceNotFoundException("找不到該課程"));
 		boolean alreadyEnrolled = user.getCourses().stream()
@@ -52,6 +57,9 @@ public class UserService {
 		if (alreadyEnrolled) {
 			throw new IllegalArgumentException("該使用者已選修此課程，不可重複選課");
 		}
+		
+		
+		
 		user.getCourses().add(course);
 		userRepository.save(user);
 		return "選課成功";

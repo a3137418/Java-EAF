@@ -34,9 +34,16 @@ public class User {
 	@Email(message = "Email 格式不正確")
 	private String email;
 
+	@NotBlank(message = "密碼不可空白")
+	private String password;
+	private String role; // "ROLE_ADMIN" / "ROLE_TEACHER" / "ROLE_STUDENT"
+	private boolean paid;// 是否已繳費，預設 false
+	private boolean enabled; // 帳號是否啟用，預設 true
+	
+	
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private UserProfile userProfile;
-
+	
 	// User 即學生，可選修多門課程
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
@@ -46,4 +53,10 @@ public class User {
 	)
 	private List<Course> courses = new ArrayList<>();
 
+	
+	
+	
+	
+	
+	
 }

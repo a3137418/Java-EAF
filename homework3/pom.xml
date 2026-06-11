@@ -49,6 +49,13 @@
 		    <artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
+		<!-- Nimbus JOSE + JWT (KeyUtil / SimpleJWT 使用) -->
+		<dependency>
+		    <groupId>com.nimbusds</groupId>
+		    <artifactId>nimbus-jose-jwt</artifactId>
+		    <version>9.37.3</version>
+		</dependency>
+
 		<!-- JJWT (JWT 簽發與驗證) -->
 		<dependency>
 		    <groupId>io.jsonwebtoken</groupId>
