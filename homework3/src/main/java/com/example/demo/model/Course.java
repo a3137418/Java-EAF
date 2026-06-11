@@ -14,6 +14,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -39,6 +40,7 @@ public class Course {
 	private Teacher teacher;
 
 	// 反向關聯，由 User 側的 @JoinTable 管理；排除以防 Lombok @Data 循環引用
+	@JsonIgnore
 	@ManyToMany(mappedBy = "courses")
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude

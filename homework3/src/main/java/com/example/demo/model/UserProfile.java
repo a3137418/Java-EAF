@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,6 +10,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Data
 @Entity
@@ -22,7 +26,9 @@ public class UserProfile {
 	private String phoneNumber;
 	private String bio;
 	
-	@com.fasterxml.jackson.annotation.JsonIgnore
+	@JsonIgnore
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	private User user;

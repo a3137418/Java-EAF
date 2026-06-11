@@ -3,6 +3,8 @@ package com.example.demo.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,6 +19,8 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Data
 @Entity
@@ -41,10 +45,15 @@ public class User {
 	private boolean enabled; // 帳號是否啟用，預設 true
 	
 	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private UserProfile userProfile;
-	
+
 	// User 即學生，可選修多門課程
+	@JsonIgnore
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 		name = "student_course",

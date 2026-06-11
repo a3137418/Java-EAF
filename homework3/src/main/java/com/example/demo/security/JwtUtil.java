@@ -46,6 +46,7 @@ public class JwtUtil {
 		try {
 			return KeyUtil.verifyJWTSignature(token, secret);
 		} catch (Exception e) {
+			System.out.println("[JwtUtil] isTokenValid 失敗: " + e.getClass().getName() + " - " + e.getMessage());
 			return false;
 		}
 	}
