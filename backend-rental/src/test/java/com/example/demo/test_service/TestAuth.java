@@ -58,6 +58,16 @@ public class TestAuth {
 	}
 	
 	
+	@Test
+	public void profile() {
+		try {
+			System.out.println(authService.getProfileDto("admin2"));
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+	}
+	
+	
 	
 	
 }
