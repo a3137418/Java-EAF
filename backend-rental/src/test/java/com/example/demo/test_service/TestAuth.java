@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.demo.rental.model.dto.auth.LoginRequest;
+import com.example.demo.rental.model.dto.auth.LoginResponse;
 import com.example.demo.rental.model.dto.auth.RegisterRequest;
 import com.example.demo.rental.service.AuthService;
 
@@ -28,8 +30,34 @@ public class TestAuth {
 		} catch (Exception e) {
 			System.err.println(e);
 		}
-		
 	}
+	
+	/*
+	 * admin/admin123
+	 * user/user123
+	 * user2/2222
+	 * */
+	@Test
+	public void login() {
+		LoginRequest login = new LoginRequest();
+		login.setUsername("user");
+		login.setPassword("user123");
+		
+		try {
+			LoginResponse reponse = authService.login(login);
+			System.out.println("登入成功");
+			System.out.println("token type: " +reponse.getTokenType());
+			System.out.println("token: " +reponse.getToken());
+			System.out.println("user: " +reponse.getUser());
+			System.out.println("fullname: " +reponse.getUser().getFullName());
+			System.out.println("username: " +reponse.getUser().getUsername());
+			System.out.println("role: " +reponse.getUser().getRole());
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+	}
+	
+	
 	
 	
 }
