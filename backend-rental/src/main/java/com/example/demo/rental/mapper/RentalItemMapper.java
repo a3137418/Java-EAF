@@ -15,7 +15,8 @@ public class RentalItemMapper {
 				item.getLocation(), 
 				item.getPricePerHour(), 
 				item.getStatus().name(), 
-				item.getImageUrl()
+				item.getImageUrl(),
+				item.getDescription()
 		);
 	}
 	

@@ -14,8 +14,9 @@ public class RentalItemResponse {
 	private Long id;
 	private String name;
 	private String type;
-	private String localtion;
+	private String location;
 	private BigDecimal pricePerHour;
 	private String status;
 	private String imageUrl;
+	private String description;
 }

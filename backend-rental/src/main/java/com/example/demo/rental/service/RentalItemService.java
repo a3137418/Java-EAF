@@ -135,7 +135,7 @@ public class RentalItemService {
 	@Transactional
 	public void delete(Long id) {
 		RentalItem item = getEntity(id);
-		rentalItemRepository.deleteById(id);
+		rentalItemRepository.delete(item);
 	}
 	
 	
