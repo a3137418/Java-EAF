@@ -98,6 +98,7 @@ public class AuthControllerTest {
 					.andDo(print())
 					.andExpect(status().isOk())
 					.andReturn();
+		
 		// 從登入回應的 JSON 中取出 Token
 		String responseBody = loginMvcResult.getResponse().getContentAsString();
 		
@@ -108,6 +109,10 @@ public class AuthControllerTest {
 		// JWT Token
 		String token = root.path("data").path("token").asText();
 		System.out.println("token: " + token);
+		
+		// 放錯誤的 Token
+//		token = "1234";
+		
 		
 		// 帶著 JWT Token 呼叫 "/api/auth/me"
 		mockMvc.perform(get("/api/auth/me")

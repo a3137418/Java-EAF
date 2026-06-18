@@ -73,8 +73,4 @@ public class AuthController {
 		UserProfileDto userProfileDto = authService.getProfileDto(authentication.getName());
 		return ApiResponse.success("查詢目前登入者成功", userProfileDto);
 	}
-	
-	
-	
-	
 }
