@@ -7,4 +7,4 @@ function ItemsPage(){
     )
 }
 
-export default ItemsPage
+export default ItemsPage;

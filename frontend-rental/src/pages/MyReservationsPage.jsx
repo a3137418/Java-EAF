@@ -1,4 +1,4 @@
-function MyReservationPage(){
+function MyReservationsPage(){
     return(
         <section>
             <h1>我的預約</h1>
@@ -7,4 +7,4 @@ function MyReservationPage(){
     )
 }
 
-export default MyReservationPage;
+export default MyReservationsPage;
