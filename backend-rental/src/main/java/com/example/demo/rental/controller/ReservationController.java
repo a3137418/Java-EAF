@@ -3,8 +3,14 @@ package com.example.demo.rental.controller;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,5 +58,60 @@ public class ReservationController {
 				return ApiResponse.success("建立預約成功, 等待管理者審核", reservation);
 	}
 	
+	/**
+	 * 查詢我的預約
+	 * 範例: GET /api/reservations/my
+	 * 
+	 * */
+	@GetMapping("/reservations/my")
+	public ApiResponse<List<ReservationResponse>> findMine(Authentication authentication) {
+		List<ReservationResponse> reservationResponses = reservationService.findMine(authentication.getName());
+		return ApiResponse.success("查詢我的預約成功", reservationResponses);
+	}
+	
+	/*
+	 * 取消預約
+	 * 範例: PATCH /api/reservations/{id}/cancel
+	 * */
+	
+	@PatchMapping("/reservations/{id}/cancel")
+	public ApiResponse<ReservationResponse> cancel(Authentication authentication , @PathVariable Long id){
+		ReservationResponse reservationResponse = reservationService.cancelMine(authentication.getName(), id);
+		return ApiResponse.success("取消預約成功", reservationResponse);
+	}
+	
+	/*
+	 * 查詢所有預約
+	 * 範例: GET /api/admin/reservations
+	 * */
+	
+	@GetMapping("/admin/reservations")	
+	@PreAuthorize("hasRole('ADMIN')")
+	public ApiResponse<List<ReservationResponse>> findAll(){
+		List<ReservationResponse> reservationResponses = reservationService.findAll();
+		return ApiResponse.success("查詢所有預約成功", reservationResponses);
+	}
+	
+	/*
+	 * 核准預約
+	 * 範例: GET /api/admin/reservations/{id}/approve
+	 * */
+	@GetMapping("/admin/reservations/{id}/approve")
+	@PreAuthorize("hasRole('ADMIN')")
+	public ApiResponse<ReservationResponse> approve(@PathVariable Long id) {
+		ReservationResponse reservationResponse = reservationService.approve(id);
+		return ApiResponse.success("核准預約成功", reservationResponse);
+	}
+	
+	/*
+	 * 退回預約
+	 * 範例: GET /api/admin/reservations/{id}/reject
+	 * */
+	@GetMapping("/admin/reservations/{id}/reject")
+	@PreAuthorize("hasRole('ADMIN')")
+	public ApiResponse<ReservationResponse> reject(@PathVariable Long id) {
+		ReservationResponse reservationResponse = reservationService.reject(id);
+		return ApiResponse.success("退回預約成功", reservationResponse);
+	}
 	
 }

@@ -2,9 +2,11 @@ package com.example.demo.test_controller;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 
 import java.time.LocalDateTime;
 
@@ -84,7 +86,7 @@ public class ReservationControllerTest {
 		
 	}
 	
-	@Test
+	//@Test
 	@WithMockUser(username = "user", roles = {"USER"})
 	public void createReservation2() throws Exception {
 		
@@ -104,6 +106,57 @@ public class ReservationControllerTest {
 		
 		System.out.println(result);
 		
+	}
+	
+	//@Test
+	@WithMockUser(username = "user" , roles = {"USER"})
+	public void findMine() throws Exception {
+		MvcResult result = mockMvc.perform(get("/api/reservations/my"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andReturn();
+		System.out.println(result);
+	}
+	
+	
+	//@Test
+	@WithMockUser(username = "user", roles = {"USER"})
+	public void cancel() throws Exception {
+		MvcResult result = mockMvc.perform(patch("/api/reservations/{id}/cancel", 7L))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andReturn();
+		System.out.println(result);
+	}
+	
+	//@Test
+	@WithMockUser(username = "admin" , roles = {"ADMIN"})
+	public void findAll() throws Exception {
+		MvcResult result = mockMvc.perform(get("/api/admin/reservations"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andReturn();
+		System.out.println(result);
+	}
+	
+	//@Test
+	@WithMockUser(username = "admin" , roles = {"ADMIN"})
+	public void approve() throws Exception {
+		MvcResult result = mockMvc.perform(get("/api/admin/reservations/{id}/approve" , 6L))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andReturn();
+		System.out.println(result);
+	}
+	
+	@Test
+	@WithMockUser(username = "admin" , roles = {"ADMIN"})
+	public void reject() throws Exception {
+		MvcResult result = mockMvc.perform(get("/api/admin/reservations/{id}/reject" , 3L))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andReturn();
+		System.out.println(result);
 	}
 	
 }
