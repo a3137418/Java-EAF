@@ -1,5 +1,13 @@
 package com.example.demo.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class LoginResponseDTO {
 
+	private String token;
+	private String tokenType;
+	private UserDTO user;
 }
