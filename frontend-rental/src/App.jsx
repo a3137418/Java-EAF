@@ -16,28 +16,31 @@ import LoginPage from "./pages/LoginPage"
 import MyReservationsPage from "./pages/MyReservationsPage"
 import AdminItemsPage from "./pages/AdminItemsPage"
 import AdminReservationsPage from "./pages/AdminReservationsPage"
-
-
+// 匯入導覽列
+import Navbar from "./components/Navbar"
 
 function App(){
   return(
-    <main className="container">
-      {/* Routes 代表路由區域 */}
-      <Routes>
-        {/* 首頁 */}
-        <Route path="/" element={<ItemsPage />}/>
-        {/* 登入頁 */}
-        <Route path="/login" element={<LoginPage />}/>
-        {/* 我的預約頁 */}
-        <Route path="/my-reservations" element={<MyReservationsPage />}/>
-        {/* 管理者-項目管理頁 */}
-        <Route path="/admin/items" element={<AdminItemsPage />}/>
-        {/* 管理者-預約審核頁 */}
-        <Route path="/admin/reservations" element={<AdminReservationsPage />}/>
+    <>
+    {/* Navbar 放在 Router 的外面代表每一頁都可以看的到 */}
+    <Navbar></Navbar>
+      <main className="container">
+        {/* Routes 代表路由區域 */}
+        <Routes>
+          {/* 首頁 */}
+          <Route path="/" element={<ItemsPage />}/>
+          {/* 登入頁 */}
+          <Route path="/login" element={<LoginPage />}/>
+          {/* 我的預約頁 */}
+          <Route path="/my-reservations" element={<MyReservationsPage />}/>
+          {/* 管理者-項目管理頁 */}
+          <Route path="/admin/items" element={<AdminItemsPage />}/>
+          {/* 管理者-預約審核頁 */}
+          <Route path="/admin/reservations" element={<AdminReservationsPage />}/>
 
-      </Routes>
-    </main>
-
+        </Routes>
+      </main>
+    </>
     
   )
 }
