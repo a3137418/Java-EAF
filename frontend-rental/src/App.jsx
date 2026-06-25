@@ -9,6 +9,8 @@
 指令 npm install react-router-dom
 
 */
+// 匯入導覽列
+import Navbar from "./components/Navbar"
 
 import { Route , Routes } from "react-router-dom"
 import ItemsPage from "./pages/ItemsPage"
@@ -16,8 +18,7 @@ import LoginPage from "./pages/LoginPage"
 import MyReservationsPage from "./pages/MyReservationsPage"
 import AdminItemsPage from "./pages/AdminItemsPage"
 import AdminReservationsPage from "./pages/AdminReservationsPage"
-// 匯入導覽列
-import Navbar from "./components/Navbar"
+
 
 function App(){
   return(
