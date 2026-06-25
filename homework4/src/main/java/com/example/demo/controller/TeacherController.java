@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 
@@ -20,7 +21,7 @@ import com.example.demo.model.Teacher;
 import com.example.demo.model.User;
 import com.example.demo.service.TeacherService;
 
-@Controller
+@RestController
 @RequestMapping("/api/teachers")
 @CrossOrigin(origins = "*")
 public class TeacherController {

@@ -31,14 +31,9 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-    private final RentalItemRepository rentalItemRepository;
-
 	@Autowired
 	private AuthService authService;
 
-    AuthController(RentalItemRepository rentalItemRepository) {
-        this.rentalItemRepository = rentalItemRepository;
-    }
 	
 	/*
 	 * 使用者註冊
