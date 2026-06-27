@@ -1,9 +1,9 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.validation.Valid;
-
+import com.example.demo.dto.UserDTO;
+import com.example.demo.mapper.UserMapper;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -28,15 +30,25 @@ public class UserController {
 	// 新增使用者
 	@PostMapping("/api/users")
 	@ResponseBody
-	public User create(@Valid @RequestBody User user) {
-		return userService.saveUser(user);
+	public UserDTO create(@Valid @RequestBody User user) {
+		return UserMapper.toProfileDTO(userService.saveUser(user));
 	}
 
 	// 查詢所有使用者
 	@GetMapping("/api/users")
 	@ResponseBody
-	public List<User> findAll() {
-		return userService.findAllUsers();
+	public List<UserDTO> findAll() {
+		List<UserDTO> result = 
+		userService
+		// 撈出所有user
+		.findAllUsers()
+		// 將List轉成串流
+		.stream()
+		// 將每一筆資料做相同的處理 user 轉成userDTO
+		.map(user -> UserMapper.toProfileDTO(user))
+		// 收集成 List<UserDTO>
+		.collect(Collectors.toList());
+		return result;
 	}
 
 	// 刪除使用者（含 UserProfile）

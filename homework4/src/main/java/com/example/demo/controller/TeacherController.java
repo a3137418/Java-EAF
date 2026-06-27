@@ -1,9 +1,9 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.validation.Valid;
-
+import com.example.demo.dto.UserDTO;
+import com.example.demo.mapper.UserMapper;
 import com.example.demo.model.Teacher;
-import com.example.demo.model.User;
 import com.example.demo.service.TeacherService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/teachers")
@@ -61,8 +62,9 @@ public class TeacherController {
 	// 查詢名下課程的所有選修學生
 	@GetMapping("/{id}/students")
 	@ResponseBody
-	public List<User> getEnrolledStudents(@PathVariable Long id){
-		return teacherService.getEnrolledStudents(id);
+	public List<UserDTO> getEnrolledStudents(@PathVariable Long id){
+		List<UserDTO> result = teacherService.getEnrolledStudents(id).stream().map(uer -> UserMapper.toProfileDTO(uer)).collect(Collectors.toList());
+		return result;
 	}
 	
 	
