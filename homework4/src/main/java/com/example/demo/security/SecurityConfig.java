@@ -33,7 +33,7 @@ public class SecurityConfig {
 			.authorizeHttpRequests(auth -> auth
 					//公開端點
 					.requestMatchers("/api/auth/**").permitAll()
-					.requestMatchers("/" , "/index.html" , "/static/**").permitAll()
+					.requestMatchers("/" , "/index.html" , "/assets/**" , "/*.ico" , "/*.png" , "/*.svg").permitAll()
 					// 管理員專屬
 					.requestMatchers(HttpMethod.GET , "/api/users").hasAuthority("ROLE_ADMIN")
 					.requestMatchers(HttpMethod.PUT , "/api/users/*/status").hasAuthority("ROLE_ADMIN")
