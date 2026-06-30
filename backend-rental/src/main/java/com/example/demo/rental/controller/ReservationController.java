@@ -94,9 +94,9 @@ public class ReservationController {
 	
 	/*
 	 * 核准預約
-	 * 範例: GET /api/admin/reservations/{id}/approve
+	 * 範例: Patch /api/admin/reservations/{id}/approve
 	 * */
-	@GetMapping("/admin/reservations/{id}/approve")
+	@PatchMapping("/admin/reservations/{id}/approve")
 	@PreAuthorize("hasRole('ADMIN')")
 	public ApiResponse<ReservationResponse> approve(@PathVariable Long id) {
 		ReservationResponse reservationResponse = reservationService.approve(id);
@@ -105,9 +105,9 @@ public class ReservationController {
 	
 	/*
 	 * 退回預約
-	 * 範例: GET /api/admin/reservations/{id}/reject
+	 * 範例: Patch /api/admin/reservations/{id}/reject
 	 * */
-	@GetMapping("/admin/reservations/{id}/reject")
+	@PatchMapping("/admin/reservations/{id}/reject")
 	@PreAuthorize("hasRole('ADMIN')")
 	public ApiResponse<ReservationResponse> reject(@PathVariable Long id) {
 		ReservationResponse reservationResponse = reservationService.reject(id);

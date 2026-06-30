@@ -8,7 +8,7 @@ import App from './App.jsx'
 
 
 // 匯入 AuthProvider
-import { AuthProvider } from './state/AuthContent.jsx'
+import { AuthProvider } from './state/AuthContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

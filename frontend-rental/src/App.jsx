@@ -9,8 +9,11 @@
 指令 npm install react-router-dom
 
 */
-// 匯入導覽列
+// 匯入導覽列 Navbar
 import Navbar from "./components/Navbar"
+
+// 匯入ProtectedRoute
+import ProtectedRoute from "./components/ProtectedRoute"
 
 import { Route , Routes } from "react-router-dom"
 import ItemsPage from "./pages/ItemsPage"
@@ -30,16 +33,38 @@ function App(){
         <Routes>
           {/* 首頁 */}
           <Route path="/" element={<ItemsPage />}/>
+
           {/* 登入頁 */}
           <Route path="/login" element={<LoginPage />}/>
-          {/* 我的預約頁 */}
-          <Route path="/my-reservations" element={<MyReservationsPage />}/>
-          {/* 管理者-項目管理頁 */}
-          <Route path="/admin/items" element={<AdminItemsPage />}/>
-          {/* 管理者-預約審核頁 */}
-          <Route path="/admin/reservations" element={<AdminReservationsPage />}/>
 
+          {/* 我的預約頁: 需要登入 */}
+          <Route 
+            path="/my-reservations" 
+            element={
+              <ProtectedRoute>
+                 <MyReservationsPage />
+              </ProtectedRoute>
+            }/>
+
+          {/* 管理者-項目管理頁 */}
+          <Route 
+            path="/admin/items" 
+            element={
+              <ProtectedRoute adminOnly>
+                <AdminItemsPage />
+              </ProtectedRoute>
+            }/>
+
+          {/* 管理者-預約審核頁 */}
+          <Route 
+            path="/admin/reservations" 
+            element={
+              <ProtectedRoute adminOnly>
+                <AdminReservationsPage />
+              </ProtectedRoute>
+            }/>
         </Routes>
+        
       </main>
     </>
     
