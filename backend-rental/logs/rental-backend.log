@@ -264,3 +264,9 @@
 2026-06-30T20:30:49.943+08:00  INFO 23388 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
 2026-06-30T20:30:49.951+08:00  INFO 23388 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
 2026-06-30T20:30:49.951+08:00  INFO 23388 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T20:33:27.792+08:00  INFO 23388 --- [backend-rental] [RMI TCP Connection(53)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2026-06-30T20:33:27.794+08:00  INFO 23388 --- [backend-rental] [RMI TCP Connection(53)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-30T20:33:27.878+08:00  INFO 23388 --- [backend-rental] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-06-30T20:33:27.881+08:00  INFO 23388 --- [backend-rental] [RMI TCP Connection(53)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-30T20:33:27.882+08:00  INFO 23388 --- [backend-rental] [RMI TCP Connection(53)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-30T20:33:27.883+08:00  INFO 23388 --- [backend-rental] [RMI TCP Connection(53)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
