@@ -270,3 +270,354 @@
 2026-06-30T20:33:27.881+08:00  INFO 23388 --- [backend-rental] [RMI TCP Connection(53)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-06-30T20:33:27.882+08:00  INFO 23388 --- [backend-rental] [RMI TCP Connection(53)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2026-06-30T20:33:27.883+08:00  INFO 23388 --- [backend-rental] [RMI TCP Connection(53)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-30T20:37:54.127+08:00  INFO 58812 --- [backend-rental] [main] c.example.demo.BackendRentalApplication  : Starting BackendRentalApplication using Java 17.0.18 with PID 58812 (C:\Users\MSI-NB\Documents\workspace-spring-tools-for-eclipse-5.0.1.RELEASE\backend-rental\target\classes started by MSI-NB in C:\Users\MSI-NB\Documents\workspace-spring-tools-for-eclipse-5.0.1.RELEASE\backend-rental)
+2026-06-30T20:37:54.128+08:00  INFO 58812 --- [backend-rental] [main] c.example.demo.BackendRentalApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-06-30T20:37:54.500+08:00  INFO 58812 --- [backend-rental] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-30T20:37:54.540+08:00  INFO 58812 --- [backend-rental] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 3 JPA repository interfaces.
+2026-06-30T20:37:54.924+08:00  INFO 58812 --- [backend-rental] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-30T20:37:54.931+08:00  INFO 58812 --- [backend-rental] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-30T20:37:54.931+08:00  INFO 58812 --- [backend-rental] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-06-30T20:37:54.959+08:00  INFO 58812 --- [backend-rental] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-30T20:37:54.959+08:00  INFO 58812 --- [backend-rental] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 802 ms
+2026-06-30T20:37:55.044+08:00  INFO 58812 --- [backend-rental] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-30T20:37:55.081+08:00  INFO 58812 --- [backend-rental] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.45.Final
+2026-06-30T20:37:55.100+08:00  INFO 58812 --- [backend-rental] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-30T20:37:55.253+08:00  INFO 58812 --- [backend-rental] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-30T20:37:55.269+08:00  INFO 58812 --- [backend-rental] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-30T20:37:55.361+08:00  INFO 58812 --- [backend-rental] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4f676900
+2026-06-30T20:37:55.362+08:00  INFO 58812 --- [backend-rental] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-30T20:37:55.413+08:00  INFO 58812 --- [backend-rental] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-30T20:37:55.919+08:00  INFO 58812 --- [backend-rental] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-30T20:37:55.988+08:00  INFO 58812 --- [backend-rental] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-30T20:37:56.242+08:00  INFO 58812 --- [backend-rental] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-30T20:37:56.242+08:00  WARN 58812 --- [backend-rental] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-30T20:37:56.326+08:00  INFO 58812 --- [backend-rental] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-30T20:37:57.033+08:00  INFO 58812 --- [backend-rental] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-06-30T20:37:57.038+08:00  INFO 58812 --- [backend-rental] [main] c.example.demo.BackendRentalApplication  : Started BackendRentalApplication in 3.18 seconds (process running for 3.559)
+2026-06-30T20:38:03.244+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-30T20:38:03.244+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-30T20:38:03.244+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-06-30T20:38:03.629+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : AuthService.login(..)執行成功，耗時 136 ms
+2026-06-30T20:38:03.629+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : AuthController.login(..)執行成功，耗時 136 ms
+2026-06-30T20:38:04.840+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 15 ms
+2026-06-30T20:38:04.840+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 15 ms
+2026-06-30T20:38:04.855+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T20:38:04.856+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 4 ms
+2026-06-30T20:38:11.545+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 4 ms
+2026-06-30T20:38:11.545+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 4 ms
+2026-06-30T20:38:11.556+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 4 ms
+2026-06-30T20:38:11.556+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 4 ms
+2026-06-30T20:38:15.158+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : AuthService.login(..)執行成功，耗時 58 ms
+2026-06-30T20:38:15.158+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : AuthController.login(..)執行成功，耗時 58 ms
+2026-06-30T20:38:17.577+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T20:38:17.578+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 4 ms
+2026-06-30T20:38:17.588+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T20:38:17.588+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:27:01.929+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 5 ms
+2026-06-30T21:27:01.930+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 6 ms
+2026-06-30T21:27:01.941+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:27:01.941+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:27:06.161+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : AuthService.login(..)執行成功，耗時 62 ms
+2026-06-30T21:27:06.161+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : AuthController.login(..)執行成功，耗時 63 ms
+2026-06-30T21:27:06.238+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 21 ms
+2026-06-30T21:27:06.239+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 23 ms
+2026-06-30T21:27:06.257+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 7 ms
+2026-06-30T21:27:06.258+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 9 ms
+2026-06-30T21:27:15.179+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:27:15.179+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:27:15.189+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:27:15.189+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:27:18.704+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 14 ms
+2026-06-30T21:27:18.706+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 17 ms
+2026-06-30T21:27:18.719+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 6 ms
+2026-06-30T21:27:18.719+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 7 ms
+2026-06-30T21:27:37.858+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 7 ms
+2026-06-30T21:27:37.859+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 8 ms
+2026-06-30T21:27:37.870+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 5 ms
+2026-06-30T21:27:37.871+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 7 ms
+2026-06-30T21:27:50.745+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : ReservationService.approve(..)執行成功，耗時 4 ms
+2026-06-30T21:27:50.773+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : ReservationController.approve(..)執行成功，耗時 33 ms
+2026-06-30T21:27:50.788+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 5 ms
+2026-06-30T21:27:50.789+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 6 ms
+2026-06-30T21:29:20.038+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:29:20.038+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:29:20.045+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:29:20.046+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:29:50.155+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.getEntity(..)執行成功，耗時 1 ms
+2026-06-30T21:29:50.187+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : ReservationService.create(..)執行成功，耗時 35 ms
+2026-06-30T21:29:50.190+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : ReservationController.create(..)執行成功，耗時 38 ms
+2026-06-30T21:30:08.714+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 6 ms
+2026-06-30T21:30:08.714+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 7 ms
+2026-06-30T21:30:08.727+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 7 ms
+2026-06-30T21:30:08.728+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 8 ms
+2026-06-30T21:30:11.776+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:30:11.777+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 7 ms
+2026-06-30T21:30:11.788+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:30:11.789+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:31:51.731+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 8 ms
+2026-06-30T21:31:51.732+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 10 ms
+2026-06-30T21:31:51.743+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 6 ms
+2026-06-30T21:31:51.744+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 7 ms
+2026-06-30T21:31:54.134+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:31:54.135+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 7 ms
+2026-06-30T21:31:54.145+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:31:54.146+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 6 ms
+2026-06-30T21:33:48.683+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 8 ms
+2026-06-30T21:33:48.684+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 10 ms
+2026-06-30T21:33:48.696+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 6 ms
+2026-06-30T21:33:48.696+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 7 ms
+2026-06-30T21:33:52.121+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:33:52.122+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:33:52.131+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 3 ms
+2026-06-30T21:33:52.132+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:33:55.655+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:33:55.655+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:33:55.665+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 5 ms
+2026-06-30T21:33:55.665+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 5 ms
+2026-06-30T21:33:57.362+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:33:57.362+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:33:57.368+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:33:57.369+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:33:57.988+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:33:57.988+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:33:57.996+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 3 ms
+2026-06-30T21:33:57.997+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:33:58.685+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 5 ms
+2026-06-30T21:33:58.685+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 6 ms
+2026-06-30T21:33:58.695+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 5 ms
+2026-06-30T21:33:58.696+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 6 ms
+2026-06-30T21:34:02.013+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationService.approve(..)執行成功，耗時 2 ms
+2026-06-30T21:34:02.016+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationController.approve(..)執行成功，耗時 6 ms
+2026-06-30T21:34:02.027+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 4 ms
+2026-06-30T21:34:02.028+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 5 ms
+2026-06-30T21:34:03.754+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 3 ms
+2026-06-30T21:34:03.755+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:34:03.765+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:34:03.766+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 6 ms
+2026-06-30T21:34:05.286+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : ReservationService.cancelMine(..)執行成功，耗時 3 ms
+2026-06-30T21:34:05.289+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : ReservationController.cancel(..)執行成功，耗時 6 ms
+2026-06-30T21:34:05.299+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 3 ms
+2026-06-30T21:34:05.300+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:34:07.019+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:34:07.019+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:34:07.025+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:34:07.025+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:34:07.773+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 4 ms
+2026-06-30T21:34:07.774+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 6 ms
+2026-06-30T21:34:07.786+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 7 ms
+2026-06-30T21:34:07.787+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 8 ms
+2026-06-30T21:34:11.200+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:34:11.200+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:34:11.208+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:34:11.208+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:34:34.238+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.getEntity(..)執行成功，耗時 0 ms
+2026-06-30T21:34:34.241+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationService.create(..)執行成功，耗時 5 ms
+2026-06-30T21:34:34.243+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationController.create(..)執行成功，耗時 7 ms
+2026-06-30T21:34:36.069+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:34:36.069+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:34:36.075+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:34:36.075+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:34:36.640+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 4 ms
+2026-06-30T21:34:36.640+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 4 ms
+2026-06-30T21:34:36.649+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 3 ms
+2026-06-30T21:34:36.650+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 5 ms
+2026-06-30T21:34:38.333+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 3 ms
+2026-06-30T21:34:38.333+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:34:38.341+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 3 ms
+2026-06-30T21:34:38.342+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:35:16.080+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:35:16.080+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:35:16.087+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:35:16.088+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:35:16.679+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:35:16.679+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:35:16.689+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:35:16.690+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:35:28.671+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:35:28.671+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:35:28.680+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:35:28.680+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:35:38.455+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:35:38.455+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:35:38.462+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:35:38.462+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:37:30.595+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.create(..)執行成功，耗時 2 ms
+2026-06-30T21:37:30.597+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.create(..)執行成功，耗時 5 ms
+2026-06-30T21:37:30.609+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:37:30.609+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:37:37.668+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:37:37.668+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:37:37.673+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:37:37.673+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:37:58.218+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.getEntity(..)執行成功，耗時 1 ms
+2026-06-30T21:37:58.220+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationService.create(..)執行成功，耗時 4 ms
+2026-06-30T21:37:58.222+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationController.create(..)執行成功，耗時 6 ms
+2026-06-30T21:38:05.116+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:38:05.116+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 6 ms
+2026-06-30T21:38:05.127+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:38:05.128+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 6 ms
+2026-06-30T21:38:16.813+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 6 ms
+2026-06-30T21:38:16.814+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 7 ms
+2026-06-30T21:38:16.823+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 4 ms
+2026-06-30T21:38:16.824+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 5 ms
+2026-06-30T21:38:21.365+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationService.approve(..)執行成功，耗時 1 ms
+2026-06-30T21:38:21.367+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationController.approve(..)執行成功，耗時 4 ms
+2026-06-30T21:38:21.377+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 4 ms
+2026-06-30T21:38:21.377+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 5 ms
+2026-06-30T21:38:23.643+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:38:23.644+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 6 ms
+2026-06-30T21:38:23.652+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:38:23.653+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 6 ms
+2026-06-30T21:38:48.758+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:38:48.758+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:38:48.765+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:38:48.765+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:41:45.503+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:41:45.503+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:41:45.511+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:41:45.512+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:42:04.389+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : AuthService.login(..)執行成功，耗時 60 ms
+2026-06-30T21:42:04.389+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : AuthController.login(..)執行成功，耗時 60 ms
+2026-06-30T21:42:04.416+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 4 ms
+2026-06-30T21:42:04.417+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 6 ms
+2026-06-30T21:42:04.426+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 5 ms
+2026-06-30T21:42:04.427+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 7 ms
+2026-06-30T21:42:10.560+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:42:10.560+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:42:10.567+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:42:10.567+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:42:29.250+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.update(..)執行成功，耗時 0 ms
+2026-06-30T21:42:29.254+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.update(..)執行成功，耗時 5 ms
+2026-06-30T21:42:29.268+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:42:29.268+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:42:46.128+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:42:46.128+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:42:46.134+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:42:46.134+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:42:58.813+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 6 ms
+2026-06-30T21:42:58.813+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 7 ms
+2026-06-30T21:42:58.821+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 4 ms
+2026-06-30T21:42:58.822+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 5 ms
+2026-06-30T21:43:02.427+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 1 ms
+2026-06-30T21:43:02.427+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 1 ms
+2026-06-30T21:43:02.432+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 1 ms
+2026-06-30T21:43:02.432+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 1 ms
+2026-06-30T21:43:15.687+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.getEntity(..)執行成功，耗時 0 ms
+2026-06-30T21:43:15.690+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : ReservationService.create(..)執行成功，耗時 4 ms
+2026-06-30T21:43:15.692+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : ReservationController.create(..)執行成功，耗時 6 ms
+2026-06-30T21:43:23.031+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 5 ms
+2026-06-30T21:43:23.032+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 6 ms
+2026-06-30T21:43:23.042+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 4 ms
+2026-06-30T21:43:23.043+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 6 ms
+2026-06-30T21:43:26.176+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : ReservationService.reject(..)執行成功，耗時 1 ms
+2026-06-30T21:43:26.179+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : ReservationController.reject(..)執行成功，耗時 4 ms
+2026-06-30T21:43:26.188+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 4 ms
+2026-06-30T21:43:26.188+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 4 ms
+2026-06-30T21:43:30.340+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:43:30.341+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 6 ms
+2026-06-30T21:43:30.351+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 7 ms
+2026-06-30T21:43:30.351+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 7 ms
+2026-06-30T21:43:34.031+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : ReservationService.cancelMine(..)執行成功，耗時 3 ms
+2026-06-30T21:43:34.034+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : ReservationController.cancel(..)執行成功，耗時 6 ms
+2026-06-30T21:43:34.042+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:43:34.043+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:43:39.451+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 3 ms
+2026-06-30T21:43:39.452+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 5 ms
+2026-06-30T21:43:39.461+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 4 ms
+2026-06-30T21:43:39.462+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 5 ms
+2026-06-30T21:43:48.682+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:43:48.684+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 7 ms
+2026-06-30T21:43:48.692+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:43:48.693+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:43:50.477+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:43:50.477+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-6] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:43:50.484+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:43:50.484+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:43:51.439+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:43:51.439+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:43:51.448+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 4 ms
+2026-06-30T21:43:51.448+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-5] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 5 ms
+2026-06-30T21:43:52.336+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:43:52.336+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:43:52.341+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:43:52.341+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 2 ms
+2026-06-30T21:43:53.161+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 4 ms
+2026-06-30T21:43:53.162+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 6 ms
+2026-06-30T21:43:53.169+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 3 ms
+2026-06-30T21:43:53.170+08:00  INFO 58812 --- [backend-rental] [http-nio-8080-exec-2] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 5 ms
+2026-06-30T21:44:36.535+08:00  INFO 58812 --- [backend-rental] [RMI TCP Connection(75)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2026-06-30T21:44:36.538+08:00  INFO 58812 --- [backend-rental] [RMI TCP Connection(75)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-30T21:44:36.631+08:00  INFO 58812 --- [backend-rental] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-06-30T21:44:36.635+08:00  INFO 58812 --- [backend-rental] [RMI TCP Connection(75)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-30T21:44:36.638+08:00  INFO 58812 --- [backend-rental] [RMI TCP Connection(75)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-30T21:44:36.640+08:00  INFO 58812 --- [backend-rental] [RMI TCP Connection(75)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-30T21:49:28.429+08:00  INFO 37952 --- [backend-rental] [main] c.example.demo.BackendRentalApplication  : Starting BackendRentalApplication using Java 21 with PID 37952 (C:\Users\MSI-NB\Documents\workspace-spring-tools-for-eclipse-5.0.1.RELEASE\backend-rental\target\classes started by MSI-NB in C:\Users\MSI-NB\Documents\workspace-spring-tools-for-eclipse-5.0.1.RELEASE\backend-rental)
+2026-06-30T21:49:28.431+08:00  INFO 37952 --- [backend-rental] [main] c.example.demo.BackendRentalApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-06-30T21:49:28.788+08:00  INFO 37952 --- [backend-rental] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-30T21:49:28.833+08:00  INFO 37952 --- [backend-rental] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 3 JPA repository interfaces.
+2026-06-30T21:49:29.215+08:00  INFO 37952 --- [backend-rental] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-30T21:49:29.223+08:00  INFO 37952 --- [backend-rental] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-30T21:49:29.225+08:00  INFO 37952 --- [backend-rental] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-06-30T21:49:29.272+08:00  INFO 37952 --- [backend-rental] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-30T21:49:29.273+08:00  INFO 37952 --- [backend-rental] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 818 ms
+2026-06-30T21:49:29.365+08:00  INFO 37952 --- [backend-rental] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-30T21:49:29.393+08:00  INFO 37952 --- [backend-rental] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.45.Final
+2026-06-30T21:49:29.415+08:00  INFO 37952 --- [backend-rental] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-30T21:49:29.576+08:00  INFO 37952 --- [backend-rental] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-30T21:49:29.593+08:00  INFO 37952 --- [backend-rental] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-30T21:49:29.703+08:00  INFO 37952 --- [backend-rental] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2a9e754e
+2026-06-30T21:49:29.705+08:00  INFO 37952 --- [backend-rental] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-30T21:49:29.753+08:00  INFO 37952 --- [backend-rental] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.45
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-30T21:49:30.233+08:00  INFO 37952 --- [backend-rental] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-30T21:49:30.307+08:00  INFO 37952 --- [backend-rental] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-30T21:49:30.560+08:00  INFO 37952 --- [backend-rental] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-30T21:49:30.560+08:00  WARN 37952 --- [backend-rental] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-30T21:49:30.631+08:00  INFO 37952 --- [backend-rental] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-30T21:49:31.285+08:00  INFO 37952 --- [backend-rental] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-06-30T21:49:31.289+08:00  INFO 37952 --- [backend-rental] [main] c.example.demo.BackendRentalApplication  : Started BackendRentalApplication in 3.124 seconds (process running for 3.31)
+2026-06-30T21:50:29.080+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-30T21:50:29.080+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-30T21:50:29.083+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-06-30T21:50:29.206+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 65 ms
+2026-06-30T21:50:29.207+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 66 ms
+2026-06-30T21:50:29.262+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 4 ms
+2026-06-30T21:50:29.262+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 4 ms
+2026-06-30T21:50:36.291+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : AuthService.login(..)執行成功，耗時 190 ms
+2026-06-30T21:50:36.291+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : AuthController.login(..)執行成功，耗時 190 ms
+2026-06-30T21:50:36.383+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 19 ms
+2026-06-30T21:50:36.384+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 20 ms
+2026-06-30T21:50:36.401+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 8 ms
+2026-06-30T21:50:36.402+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-9] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 10 ms
+2026-06-30T21:50:41.849+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:50:41.849+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 3 ms
+2026-06-30T21:50:41.859+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.findAll(..)執行成功，耗時 4 ms
+2026-06-30T21:50:41.859+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-4] c.example.demo.rental.aop.LoggingAspect  : RentalItemController.findAll(..)執行成功，耗時 4 ms
+2026-06-30T21:50:53.740+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : RentalItemService.getEntity(..)執行成功，耗時 4 ms
+2026-06-30T21:50:53.772+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationService.create(..)執行成功，耗時 37 ms
+2026-06-30T21:50:53.775+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationController.create(..)執行成功，耗時 41 ms
+2026-06-30T21:50:59.811+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 8 ms
+2026-06-30T21:50:59.812+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 10 ms
+2026-06-30T21:50:59.830+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 9 ms
+2026-06-30T21:50:59.831+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-10] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 11 ms
+2026-06-30T21:51:02.594+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : ReservationService.approve(..)執行成功，耗時 2 ms
+2026-06-30T21:51:02.601+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-1] c.example.demo.rental.aop.LoggingAspect  : ReservationController.approve(..)執行成功，耗時 10 ms
+2026-06-30T21:51:02.618+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findAll()執行成功，耗時 8 ms
+2026-06-30T21:51:02.618+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-3] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findAll()執行成功，耗時 8 ms
+2026-06-30T21:51:04.166+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 11 ms
+2026-06-30T21:51:04.167+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-7] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 13 ms
+2026-06-30T21:51:04.180+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : ReservationService.findMine(..)執行成功，耗時 6 ms
+2026-06-30T21:51:04.181+08:00  INFO 37952 --- [backend-rental] [http-nio-8080-exec-8] c.example.demo.rental.aop.LoggingAspect  : ReservationController.findMine(..)執行成功，耗時 7 ms

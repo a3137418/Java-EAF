@@ -5,103 +5,196 @@ import { useEffect, useState } from "react";
 // 匯入自訂 API 工具
 import { apiFetch } from "../api/client";
 
+// 取得登入狀態
+import { useAuth } from '../state/AuthContext';
+
 function ItemsPage() {
-    // items 改成空陣列, 之後由後端 API 載入
-    const [items, setItems] = useState([]);
+  // isLogin 用來判斷是否已登入
+  const { isLogin } = useAuth();
 
-    // 顯示錯誤或成功的訊息
-    const [message, setMessage] = useState('');
+  const [items, setItems] = useState([]);
+  const [keyword, setKeyword] = useState('');
+  const [type, setType] = useState('');
+  const [message, setMessage] = useState('');
 
-    // keyword 儲存關鍵字-查詢條件
-    const [keyword, setKeyword] = useState('');
+  // reservationForms 用來記錄每一個 item 的預約表單
+  // 格式大概是：
+  // {
+  //   1: { startTime: '...', endTime: '...', note: '...' },
+  //   2: { startTime: '...', endTime: '...', note: '...' }
+  // }
+  const [reservationForms, setReservationForms] = useState({});
 
-    // type 儲存類型-查詢條件
-    const [type, setType] = useState('');
+  // 載入租用項目
+  const loadItems = async () => {
+    const params = new URLSearchParams();
 
-    // 載入租用項目資料
-    const loadItems = async() => {
-        // URLSearchParams 來組 query string
-        const params = new URLSearchParams();
-        if(keyword) {
-            params.append('keyword', keyword);
-        }
-        if(type) {
-            params.append('type', type);
-        }
-        const queryString = params.toString();
+    if (keyword) {
+      params.append('keyword', keyword);
+    }
 
-        const path = queryString ? `/items?${queryString}` : '/items';
+    if (type) {
+      params.append('type', type);
+    }
 
-        // 呼叫後端 API
-        const result = await apiFetch(path);
+    const queryString = params.toString();
+    const path = queryString ? `/items?${queryString}` : '/items';
 
-        // 將後端回傳的 data 放進 items
-        setItems(result.data);
-    };
+    const result = await apiFetch(path);
+    setItems(result.data);
+  };
 
-    // 載入畫面第一次要執行的程式
-    useEffect(() => {
-        loadItems().catch((err) => setMessage(err.message));
-    }, []);
+  // 頁面第一次載入時讀取項目
+  useEffect(() => {
+    loadItems().catch((err) => setMessage(err.message));
+  }, []);
 
-    return (
-        <section>
-            <h1>租用項目</h1>
-            
-            {/* 查詢工具列 */}
-            <div className="toolbar">
-                <input value={keyword} 
-                       placeholder="關鍵字, 例如 教室"
-                       onChange={(e) => setKeyword(e.target.value)} />
+  // 更新某一個 item 的某一個表單欄位
+  const updateForm = (itemId, field, value) => {
+    setReservationForms((prev) => ({
+      ...prev,
 
-                <select value={type} onChange={(e) => setType(e.target.value)}>
-                    <option value="">全部類型</option>
-                    <option value="教室">教室</option>
-                    <option value="設備">設備</option>
-                    <option value="場地">場地</option>
-                </select>
+      // 用 itemId 區分不同卡片的表單
+      [itemId]: {
+        ...(prev[itemId] || {}),
 
-                <button onClick={loadItems}>查詢</button>
-                
-            </div>
+        // 動態更新 startTime、endTime 或 note
+        [field]: value,
+      },
+    }));
+  };
 
-            {message && <div className="alert">{message}</div>}
+  // 送出預約
+  const reserve = async (itemId) => {
+    setMessage('');
 
-            {/* 利用 grid 來排版多張卡片(租用項目) */}
-            <div className="grid">
-                {/* 利用 map 來走訪 filteredItems 裡的每一筆資料並轉成畫面UI標籤 */}
-                {
-                    items.map((item) => (
-                        <article className="card" key={item.id}>
-                            {/* 如果後端有 imageURL 就顯示圖片 */}
-                            {
-                                item.imageUrl && (
-                                    <img src={item.imageUrl} alt={item.name} className="item-image" />
-                                )
-                            }
-                            <h2>{item.name}</h2>
-                            <p>
-                                {item.type} | {item.location}
-                            </p>
-                            <p>
-                               {item.description} 
-                            </p>
-                            <p className="price">
-                                NT$ {item.pricePerHour} / 小時
-                            </p>
-                            <span className="badge">
-                                {item.status}
-                            </span>
-                        </article>
-                    ))
-                }
+    // 取得目前 item 對應的表單資料
+    const form = reservationForms[itemId] || {};
 
-            </div>
+    try {
+      await apiFetch('/reservations', {
+        method: 'POST',
+        body: JSON.stringify({
+          itemId,
+          startTime: form.startTime,
+          endTime: form.endTime,
+          note: form.note || '',
+        }),
+      });
 
-        </section>
+      setMessage('預約建立成功，等待管理者審核');
 
-    )
+      // 清空該項目的表單
+      setReservationForms((prev) => ({
+        ...prev,
+        [itemId]: {},
+      }));
+    } catch (err) {
+      setMessage(err.message);
+    }
+  };
 
+  return (
+    <section>
+      <h1>租用項目</h1>
+
+      <div className="toolbar">
+        <input
+          placeholder="關鍵字，例如 教室"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        />
+
+        <select
+          value={type}
+          onChange={(e) => setType(e.target.value)}
+        >
+          <option value="">全部類型</option>
+          <option value="教室">教室</option>
+          <option value="設備">設備</option>
+          <option value="場地">場地</option>
+        </select>
+
+        <button onClick={loadItems}>查詢</button>
+      </div>
+
+      {message && <div className="alert">{message}</div>}
+
+      <div className="grid">
+        {items.map((item) => {
+          // 取得這個 item 對應的表單
+          const form = reservationForms[item.id] || {};
+
+          return (
+            <article className="card" key={item.id}>
+
+                {/* 顯示租用項目圖片 */}
+                {item.imageUrl && (
+                <img
+                src={item.imageUrl}
+                alt={item.name}
+                className="item-image"
+                />
+                )}
+              <h2>{item.name}</h2>
+
+              <p>
+                {item.type}｜{item.location}
+              </p>
+
+              <p>{item.description}</p>
+
+              <p className="price">
+                NT$ {item.pricePerHour} / 小時
+              </p>
+
+              <span className="badge">
+                {item.status}
+              </span>
+
+              {/* 登入後才顯示預約表單 */}
+              {isLogin ? (
+                <div className="reserve-box">
+                  <label>開始時間</label>
+                  <input
+                    type="datetime-local"
+                    value={form.startTime || ''}
+                    onChange={(e) =>
+                      updateForm(item.id, 'startTime', e.target.value)
+                    }
+                  />
+
+                  <label>結束時間</label>
+                  <input
+                    type="datetime-local"
+                    value={form.endTime || ''}
+                    onChange={(e) =>
+                      updateForm(item.id, 'endTime', e.target.value)
+                    }
+                  />
+
+                  <label>備註</label>
+                  <input
+                    value={form.note || ''}
+                    onChange={(e) =>
+                      updateForm(item.id, 'note', e.target.value)
+                    }
+                    placeholder="例如需要投影機"
+                  />
+
+                  <button onClick={() => reserve(item.id)}>
+                    送出預約
+                  </button>
+                </div>
+              ) : (
+                <p className="hint">登入後可送出預約</p>
+              )}
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  );
 }
 
 export default ItemsPage;
