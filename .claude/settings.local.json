@@ -9,7 +9,10 @@
       "Bash(git config *)",
       "Bash(./mvnw -q -o compile)",
       "Bash(git rm *)",
-      "Bash(gh repo *)"
+      "Bash(gh repo *)",
+      "Bash(git fetch *)",
+      "Bash(git ls-remote *)",
+      "Bash(git subtree *)"
     ]
   }
 }
